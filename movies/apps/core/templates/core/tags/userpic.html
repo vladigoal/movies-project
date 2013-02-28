@@ -1,0 +1,16 @@
+{% spaceless %}
+{% load thumbnail %}
+{% load static from staticfiles %}
+{% if image %}
+    {% if geometry %}
+        {% thumbnail image geometry crop="center" as im %}
+            <img class="userpic" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}"/>
+        {% endthumbnail %}
+    {% else %}
+        <img class="userpic" src="{% static image.url %}" width="{{ image.width }}" height="{{ image.height }}"/>
+    {% endif %}
+{% else %}
+    <img class="userpic" src="{% if url %}{{ url }}{% else %}{% static 'img/noavatar.png' %}{% endif %}" width="{{ width }}" height="{{ height }}"/>
+{% endif %}
+
+{% endspaceless %}

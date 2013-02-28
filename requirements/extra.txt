@@ -1,0 +1,3 @@
+#this file is only required if you want to get image of models schema
+django-extensions
+pygraphviz

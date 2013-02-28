@@ -1,0 +1,21 @@
+Django==1.4.3
+South
+wsgiref
+sorl-thumbnail
+PIL
+django-annoying
+django-compressor==1.2
+lxml
+BeautifulSoup<4.0
+Pinax
+pinax-theme-bootstrap==2.2.1
+# git+git://github.com/pinax/django-mailer.git
+git+git://github.com/lizrice/django-email-confirmation.git
+django-timezones==0.2
+pytz==2011n
+metron==0.1
+factory_boy
+django-ajax-selects
+git+git://github.com/imposeren/django-bootstrap-form.git
+pytils==0.2.3
+mock==1.0.1

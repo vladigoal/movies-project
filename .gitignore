@@ -1,0 +1,24 @@
+#
+# Excluded objects
+#
+
+.*
+*~
+*.py[co]
+*.ipr
+*.iml
+*.iws
+env
+Vagrantfile
+tests/coverage/modules/*
+Makefile.def
+movies/settings/local.py
+movies/static_media/
+db.sqlite3
+db_schema.png
+
+#
+# Included objects
+#
+!.gitignore
+

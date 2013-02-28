@@ -1,0 +1,22 @@
+from utils import proj
+
+# variables used to specify lessc include path. See __init__ for details
+ENV_PATH = proj('.env')
+
+PYTHON_PATHNAME = 'python2.7'
+
+COMPRESS_ENABLED = True
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.template.TemplateFilter',
+    'compressor.filters.css_default.CssAbsoluteFilter',
+]
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.template.TemplateFilter',
+]
+
+# COMPRESS_YUI_BINARY = '/usr/bin/yui-compressor'
+# LESS_BIN = '/usr/bin/lessc'
+
+# EMAIL_PORT = 1025

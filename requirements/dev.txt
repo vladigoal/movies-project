@@ -1,0 +1,4 @@
+-r sqlite.txt
+django-debug-toolbar
+coverage
+django-coverage

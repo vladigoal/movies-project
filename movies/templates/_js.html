@@ -1,0 +1,25 @@
+{% load ifsetting_tag %}
+{% load i18n %}
+<script type="text/javascript">
+    window.AW_DEBUG = false;
+    {% ifsetting DEBUG %}
+        window.AW_DEBUG = true;
+    {% endifsetting %}
+    window.movies = {};
+    window.movies.ready = false;
+    window.movies.site_url = "{{ SITE_URL }}";
+
+    window.debug_log = function debug_log(){
+        if (window.AW_DEBUG){
+            console.log(arguments)
+        }
+    }
+
+    $(window).ready(function() {
+        window.AW.ready = true;
+    });
+
+    var trans_messages = {
+            'Invalid amount': '{% trans 'Invalid amount' %}'
+    }
+</script>
