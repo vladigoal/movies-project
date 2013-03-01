@@ -72,7 +72,6 @@ ACCOUNT_EMAIL_AUTHENTICATION = False
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = False
 
 AUTHENTICATION_BACKENDS = [
-    'django_facebook.auth_backends.FacebookBackend',
     "pinax.apps.account.auth_backends.AuthenticationBackend",
 ]
 

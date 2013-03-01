@@ -1,0 +1,37 @@
+[
+    {
+        "pk": 1, 
+        "model": "sites.site", 
+        "fields": {
+            "domain": "127.0.0.1:8000", 
+            "name": "movies.example.com"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "admin", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2012-11-12T14:22:23.268Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$a2EmoBscEy3i$XZ+eTPjvHDOKb+LoRaW6YsNA3vSOqBsdymQteXNMLrw=", 
+            "email": "admin@mail.com", 
+            "date_joined": "2012-11-12T14:10:38.524Z"
+        }
+    },
+    {
+        "pk": 1, 
+        "model": "account.account", 
+        "fields": {
+            "timezone": "America/Chicago", 
+            "user": 1, 
+            "language": "en-us"
+        }
+    }
+]

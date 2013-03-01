@@ -12,7 +12,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    url(r'^$', "movies.apps.core.views.home_page", name="home"),
+    url(r'^$', "movies.apps.core.views.home", name="home"),
+    url(r'^core/', include('movies.apps.core.urls')),
+
+    url(r'^admin/', include(admin.site.urls)),
 
     # translation
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog',
