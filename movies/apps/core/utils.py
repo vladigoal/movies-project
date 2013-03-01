@@ -15,7 +15,6 @@ from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-from pytils.translit import slugify
 from sorl.thumbnail import get_thumbnail
 
 

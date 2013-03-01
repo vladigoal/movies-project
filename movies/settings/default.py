@@ -21,7 +21,7 @@ DATABASES = {
 }
 
 
-SESSION_ENGINE='django.contrib.sessions.backends.cache'
+#SESSION_ENGINE='django.contrib.sessions.backends.cache'
 
 if 'test' in sys.argv:
     DATABASES['default']['NAME'] = ':memory:'

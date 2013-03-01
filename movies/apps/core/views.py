@@ -23,7 +23,6 @@ def dummy_list_or_details(request, app_label, model_name, is_list=False, slug=No
     # please read core.models.DummyUrlMixin cocstrings for details on next two method calls
     context.update(obj.prepare_context(request, *args, **kwargs))
     context.update(obj.get_template(request, *args, **kwargs))
-    print context
 
     return context
 
