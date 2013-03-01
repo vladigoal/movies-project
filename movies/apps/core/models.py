@@ -19,21 +19,30 @@ from .utils import unique_slug
 class DummyUrlMixin(object):
     TEMPLATE = "core/generic_details.html"
     LIST_TEMPLATE = "core/generic_list.html"
+    DETAILS_VIEW = "movies.apps.core.views.dummy_details"
+    LIST_VIEW = "movies.apps.core.views.dummy_list"
 
     @models.permalink
     def get_absolute_url(self):
+        """Get url for instance. You can override class or instance attribute DETAILS_VIEW to change view's path
+
+        """
         self_type = ContentType.objects.get_for_model(self)
         app_label = self_type.app_label
         model_name = self_type.model
-        return ("movies.apps.core.views.dummy_details", (),
+        return (self.DETAILS_VIEW, (),
                 {"slug": self.slug, 'model_name': model_name, 'app_label': app_label})
 
+    @classmethod
     @models.permalink
-    def get_listurl(self):
-        self_type = ContentType.objects.get_for_model(self)
+    def get_listurl(cls):
+        """Get url for list_view of model. You can override class attribute LIST_VIEW to change view's path
+
+        """
+        self_type = ContentType.objects.get_for_model(cls)
         app_label = self_type.app_label
         model_name = self_type.model
-        return ("movies.apps.core.views.dummy_list", (),
+        return (cls.LIST_VIEW, (),
                 {'model_name': model_name, 'app_label': app_label})
 
     def prepare_context(self, *args, **kwargs):
