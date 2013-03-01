@@ -17,12 +17,63 @@ from .utils import unique_slug
 
 
 class DummyUrlMixin(object):
+    TEMPLATE = "core/generic_details.html"
+    LIST_TEMPLATE = "core/generic_list.html"
+
     @models.permalink
     def get_absolute_url(self):
         self_type = ContentType.objects.get_for_model(self)
         app_label = self_type.app_label
         model_name = self_type.model
-        return ("movies.apps.core.views.dummy_details", (), {"slug": self.slug, 'model': model_name, 'app_label': app_label})
+        return ("movies.apps.core.views.dummy_details", (),
+                {"slug": self.slug, 'model_name': model_name, 'app_label': app_label})
+
+    @models.permalink
+    def get_listurl(self):
+        self_type = ContentType.objects.get_for_model(self)
+        app_label = self_type.app_label
+        model_name = self_type.model
+        return ("movies.apps.core.views.dummy_list", (),
+                {'model_name': model_name, 'app_label': app_label})
+
+    def prepare_context(self, *args, **kwargs):
+        """Derived classes should override this method to prepare additional context dictionary for dummy_details view.
+
+        Note that dummy_details view passes it's *args and **kwargs here
+        """
+        return dict()
+
+    def get_template(self, *args, **kwargs):
+        """Derived classes should set cls.TEMPLATE or instance.TEMPLATE or override this method to change template used
+        by dummy_details view.
+        This method should return {'TEMPLATE': 'path/to/template.thml'}
+
+        Note that dummy_details view passes it's *args and **kwargs here
+        """
+        return dict(TEMPLATE=self.TEMPLATE)
+
+    def get_list_template(self, *args, **kwargs):
+        """Derived classes should set cls.LIST_TEMPLATE or instance.LIST_TEMPLATE or override this method to change
+        template used by dummy_list view.
+        This method should return {'TEMPLATE': 'path/to/template.thml'}
+
+        Note that dummy_list view passes it's *args and **kwargs here
+        """
+        return dict(TEMPLATE=self.LIST_TEMPLATE)
+
+    def prepare_list_context(self, *args, **kwargs):
+        """Derived classes should override this method to prepare additional context dictionary for dummy_list view.
+
+        Note that dummy_list view passes it's *args and **kwargs here
+        """
+        return dict()
+
+    def get_list_queryset(self, *args, **kwargs):
+        """Derived classes should override this method to prepare additional context dictionary for dummy_list view.
+
+        Note that dummy_list view passes it's *args and **kwargs here
+        """
+        return self.objects.all()
 
 
 class AutoTitleSlugMixin(object):

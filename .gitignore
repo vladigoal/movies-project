@@ -21,4 +21,5 @@ db_schema.png
 # Included objects
 #
 !.gitignore
+!.pep8
 
