@@ -33,12 +33,7 @@ INSTALLED_APPS += [
     'django_forms_bootstrap',
     'ajax_select',
     'bootstrapform_too',
+    'modelhelpers',
 ]
 
 INSTALLED_APPS_MORE = []
-
-
-DEFAULT_DETAILS_TEMPLATE = "core/generic_details.html"
-DEFAULT_DETAILS_VIEW = "movies.apps.core.views.dummy_details"
-DEFAULT_LIST_TEMPLATE = "core/generic_list.html"
-DEFAULT_LIST_VIEW = "movies.apps.core.views.dummy_list"

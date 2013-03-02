@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^$', "movies.apps.core.views.home", name="home"),
     url(r'^core/', include('movies.apps.core.urls')),
+    url(r'^apps/', include('modelhelpers.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 

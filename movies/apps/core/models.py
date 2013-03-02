@@ -24,11 +24,6 @@ class Movie(models.Model, DummyUrlMixin, TitleSlugifyMixin):
     def __unicode__(self):
         return self.title
 
-    @models.permalink
-    def get_absolute_url(self):
-        return ("movies.apps.core.views.movie_details", (), {"slug": self.slug})
-
-
 class ImagedModel(models.Model):
     image = models.ImageField(upload_to='movie-shots', height_field='image_height', width_field='image_width')
     image_width = models.SmallIntegerField(default=0)
