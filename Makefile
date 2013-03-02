@@ -24,7 +24,7 @@ mailserver:
 	python -m smtpd -n -c DebuggingServer $(BIND_TO):$(MAILSERVER_PORT)
 
 initproject: 
-	$(MANAGE) syncdb
+	$(MANAGE) syncdb --noinput
 	$(MANAGE) migrate
 	@echo loading initial data
 	$(MANAGE) loaddata $(PROJECT_NAME).json

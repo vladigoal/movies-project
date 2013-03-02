@@ -20,3 +20,4 @@ git+git://github.com/imposeren/django-bootstrap-form.git
 pytils==0.2.3
 mock==1.0.1
 hg+https://bitbucket.org/imposeren/django-model-helpers
+django-ratings

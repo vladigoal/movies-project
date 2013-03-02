@@ -1,1 +1,20 @@
-Hello world
+{% extends 'site_base.html' %}
+
+
+{% block content %}
+    {% with day_movie=movies_of_the_day.0 %}
+        Movie of the day:<br/>
+        {{ day_movie.title }}<br/>
+        {{ day_movie.description}}<br/>
+        {% for trailer in movies_of_the_day.0.trailer_set.all %}
+            <img width="200px" src="{{trailer.image.url}}"><br/>
+        {% endfor %}
+        rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}
+    {% endwith %}
+
+
+    <h1>Movies of the month:</h1>
+    {% for movie in movies_of_the_month %}
+        {{movie}}<br/>
+    {% endfor %}
+{% endblock %}

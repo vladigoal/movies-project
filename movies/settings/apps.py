@@ -34,6 +34,7 @@ INSTALLED_APPS += [
     'ajax_select',
     'bootstrapform_too',
     'modelhelpers',
+    'djangoratings',
 ]
 
 INSTALLED_APPS_MORE = []
