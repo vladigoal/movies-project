@@ -1,13 +1,16 @@
 {% extends 'site_base.html' %}
+{% load thumbnail %}
 
 
 {% block content %}
     {% with day_movie=movies_of_the_day.0 %}
-        Movie of the day:<br/>
+        <h1>Movie of the day</h1>
         {{ day_movie.title }}<br/>
-        {{ day_movie.description}}<br/>
+        {{ day_movie.description }}<br/>
         {% for trailer in movies_of_the_day.0.trailer_set.all %}
-            <img width="200px" src="{{trailer.image.url}}"><br/>
+            {% thumbnail trailer.image "200" as image %}
+                <img src="{{ image.url }}"><br/>
+            {% endthumbnail %}
         {% endfor %}
         rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}
     {% endwith %}
@@ -15,6 +18,25 @@
 
     <h1>Movies of the month:</h1>
     {% for movie in movies_of_the_month %}
-        {{movie}}<br/>
+        {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}<br/>
+    {% endfor %}
+
+    <h1>Movies of the day history:</h1>
+    {% for history in movies_of_the_day_history %}
+        {{ history.rated_day }}
+        {% with movie=history.movie trailers=history.movie.trailer_set.all %}
+            {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}<br/>
+            {{ movie.get_image_playable.0.url }}
+        {% endwith %}</br>
+    {% endfor %}
+
+    <h1>Latest news:</h1>
+    {% for newsitem in news %}
+        {{ newsitem.title }} {{ newsitem.full_text }}
+        {{ newsitem.get_image_playable.0.url }}
+        {% if newsitem.get_image_playable.1 %}
+            It's trailer with url {{newsitem.get_image_playable.1 }}
+        {% endif %}
+        </br>
     {% endfor %}
 {% endblock %}

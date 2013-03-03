@@ -89,7 +89,9 @@
         <div class="nav-collapse">
             {% block nav %}
                 <ul class="nav main">
-                    <li><a href="/" class="">Home</a></li>
+                    {% for item in menu_description.values %}
+                        {% include "blocks/menu-item.html" %}
+                    {% endfor %}
                     {% if user.is_authenticated %}
                     {% else %}
                     {% endif %}

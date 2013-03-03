@@ -96,6 +96,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "pinax.core.context_processors.pinax_settings",
     "pinax.apps.account.context_processors.account",
     'movies.apps.core.context_processors.site_url',
+    'movies.apps.core.context_processors.menu_status',
 )
 
 ABSOLUTE_URL_OVERRIDES = {
