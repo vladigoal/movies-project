@@ -105,8 +105,6 @@ class NewsItem(models.Model, DummyUrlMixin, AutoProcessFieldsMixin):
                 raise ValidationError(_(u"Please choose image of movie «%s»") % self.movie.title)
             if self.chosen_trailer and self.chosen_trailer.movie != self.movie:
                 raise ValidationError(_(u"Please choose trailer of movie «%s»") % self.movie.title)
-            if not (self.movie.trailer_set.all().count() or self.movie.movieshot_set.all().count() or self.movie.image) and not self.image:
-                raise ValidationError(_(u"Movie «%s» does not have trailer or screenshot. Please select other movie or add image") % self.movie.title)
         if not (self.movie or self.image):
             raise ValidationError(_(u"Please choose movie or image"))
 
