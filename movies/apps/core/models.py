@@ -8,13 +8,13 @@ Core models.
 #from django.core.exceptions import ValidationError
 from django.core.exceptions import ValidationError
 from django.db import models
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 from djangoratings.fields import RatingField
 
-#from annoying.fields import AutoOneToOneField
+from annoying.fields import AutoOneToOneField
 from modelhelpers.mixins import DummyUrlMixin, TitleSlugifyMixin, AutoProcessFieldsMixin
 from modelhelpers.utils import unique_slug
 
@@ -28,12 +28,26 @@ class ImagedModel(models.Model):
         abstract = True
 
 
-class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin, ):
+class MovieStudio(models.Model, TitleSlugifyMixin):
     title = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(_("Name to be used in urls"), max_length=100, unique=True, blank=True, help_text=_("Auto populated"))
+    slug = models.SlugField(
+        _("Name to be used in urls"), max_length=100, unique=True, blank=True,
+        help_text=_("Auto populated"))
+
+    logo = models.ImageField(upload_to='studio-logos', height_field='logo_height', width_field='logo_width')
+    logo_width = models.SmallIntegerField(default=0, blank=True, help_text=_("Auto populated"))
+    logo_height = models.SmallIntegerField(default=0, blank=True, help_text=_("Auto populated"))
+
+
+class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin):
+    title = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(
+        _("Name to be used in urls"), max_length=100, unique=True, blank=True,
+        help_text=_("Auto populated"))
 
     short_description = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    studio = models.ForeignKey(MovieStudio, blank=True, null=True)
 
     played_times_day = models.IntegerField(default=0)
     played_times_month = models.IntegerField(default=0)
@@ -58,6 +72,14 @@ class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin, ):
             return (self.movieshot_set.all()[0].image, None)
         return None, False
 
+    def get_image(self):
+        if self.image:
+            return self.image
+        shots = self.movieshot_set.all()
+        if shots.count():
+            return shots[0].image
+        return None
+
 
 class MovieShot(ImagedModel, DummyUrlMixin):
     movie = models.ForeignKey(Movie)
@@ -79,7 +101,9 @@ class NewsItem(models.Model, DummyUrlMixin, AutoProcessFieldsMixin):
 
     creation_time = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(_("Name to be used in urls"), max_length=100, unique=True, blank=True, help_text=_("Auto populated"))
+    slug = models.SlugField(
+        _("Name to be used in urls"), max_length=100, unique=True, blank=True,
+        help_text=_("Auto populated"))
 
     full_text = models.TextField()
     short_text = models.CharField(max_length=100, blank=True, help_text=_("Auto populated"))
@@ -88,7 +112,8 @@ class NewsItem(models.Model, DummyUrlMixin, AutoProcessFieldsMixin):
     chosen_image = models.ForeignKey(MovieShot, blank=True, null=True)
     chosen_trailer = models.ForeignKey(Trailer, blank=True, null=True)
 
-    image = models.ImageField(upload_to='news', height_field='image_height', width_field='image_width', blank=True, null=True)
+    image = models.ImageField(
+        upload_to='news', height_field='image_height', width_field='image_width', blank=True, null=True)
     image_width = models.SmallIntegerField(default=0, blank=True, help_text=_("Auto populated"))
     image_height = models.SmallIntegerField(default=0, blank=True, help_text=_("Auto populated"))
 
@@ -151,3 +176,44 @@ class TopsHistory(models.Model):
 
     class Meta:
         ordering = ['-rated_day']
+
+
+class StudioMotivationInfo(models.Model):
+    studio = AutoOneToOneField(MovieStudio)
+    reputation_bonus = models.SmallIntegerField(default=1, blank=True)
+    watch_minutes_bonus = models.SmallIntegerField(default=1, blank=True)
+    prize = models.CharField(max_length=100, blank=True, null=True)
+    prize_firiends_condition = models.SmallIntegerField(default=5, blank=True)
+
+
+class MotivationProgressResultsWrapper(object):
+    def __init__(self, counter, reputation, watch_minutes):
+        self.__reputation = counter * reputation
+        self.__watch_minutes = counter * watch_minutes
+        self.__counter = counter
+
+    @property
+    def reputation(self):
+        return self.__reputation
+
+    @property
+    def watch_minutes(self):
+        return self.__watch_minutes
+
+
+class StudioMotivationProgress(models.Model):
+    info = models.ForeignKey(StudioMotivationInfo)
+    user = models.ForeignKey(User, related_name='motivationprogress_actor')
+    friends = models.ManyToManyField(User, related_name='motivationprogress_targets')
+
+    class Meta:
+        unique_together = (('info', 'user'),)
+
+    @property
+    def progress(self):
+        return self.friends.all().count()
+
+    @property
+    def results(self):
+        counter = self.friends.all().count()
+        return MotivationProgressResultsWrapper(counter, self.info.reputation_bonus, self.info.watch_minutes_bonus)

@@ -1,0 +1,26 @@
+{% load url from future %}
+{% load i18n %}
+
+{{ studio.logo.url }}
+<h1>
+{% blocktrans with title=studio.title %}
+Recommend {{ studio.title }} to firends and get rewards
+{% endblocktrans %}
+</h1>
+
+{{ motivation_info.reputation_bonus }}<br/>
+{{ motivation_info.watch_minutes_bonus }}<br/>
+{% if motivation_info.prize and motivation_info.prize_firiends_condition %}
+bring {{ motivation_info.prize_firiends_condition }} … and get: {{ motivation_info.prize }}<br/>
+{% endif %}
+
+
+<form action="{% url 'recommend_studio' studio.slug %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+
+{% with results=motivation_progress.results %}
+    Your friends … {{results.reputation}} {{results.watch_minutes}}
+{% endwith %}

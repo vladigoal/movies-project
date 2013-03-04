@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^$', "movies.apps.core.views.home", name="home"),
     url(r'^core/', include('movies.apps.core.urls')),
+    url(r'^recommend/(?P<studio_slug>[\-\w\d]+)/?$', "movies.apps.core.views.recommend_popup", name="recommend_studio"),
     url(r'^apps/', include('modelhelpers.urls')),
     url(r'^account/', include('pinax.apps.account.urls')),
 

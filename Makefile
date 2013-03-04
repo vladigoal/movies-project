@@ -28,6 +28,7 @@ initproject:
 	$(MANAGE) migrate
 	@echo loading initial data
 	$(MANAGE) loaddata $(PROJECT_NAME).json
+	$(MANAGE) create_data
 	@echo Done
 
 

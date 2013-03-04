@@ -1,4 +1,4 @@
-from utils import root
+from utils import proj
 
 
 TEMPLATE_LOADERS = (
@@ -7,5 +7,5 @@ TEMPLATE_LOADERS = (
     )
 
 TEMPLATE_DIRS = (
-    root('templates/')
+    proj('templates/')
     )

@@ -3,7 +3,7 @@ import urllib
 
 from django.utils.encoding import smart_str
 
-from utils import proj, root
+from .utils import proj, root
 
 
 DEBUG = True
@@ -12,7 +12,7 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.spatialite',
-        'NAME': proj('db.sqlite3'),
+        'NAME': root('db.sqlite3'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -44,7 +44,7 @@ ROOT_URLCONF = 'movies.urls'
 WSGI_APPLICATION = 'movies.wsgi.application'
 
 COMPRESS_ENABLED = True
-COMPRESS_YUI_BINARY = 'java -jar %s' % proj('dev_bins/yuicompressor-2.4.6.jar')
+COMPRESS_YUI_BINARY = 'java -jar %s' % root('dev_bins/yuicompressor-2.4.6.jar')
 LESS_BIN = ''
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.template.TemplateFilter',
@@ -103,7 +103,7 @@ ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda o: "/accounts/%s/" % urllib.quote(smart_str(o.username)),
 }
 
-ENV_PATH = proj('.env')
+ENV_PATH = root('.env')
 
 PYTHON_PATHNAME = 'python2.7'
 

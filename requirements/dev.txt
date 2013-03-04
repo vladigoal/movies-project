@@ -2,3 +2,4 @@
 django-debug-toolbar
 coverage
 django-coverage
+factory_boy

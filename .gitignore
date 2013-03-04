@@ -13,7 +13,7 @@ Vagrantfile
 tests/coverage/modules/*
 Makefile.def
 movies/settings/local.py
-movies/static_media/
+static_media
 db.sqlite3
 db_schema.png
 modelhelpers

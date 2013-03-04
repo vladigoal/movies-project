@@ -6,10 +6,10 @@ EMAIL_PORT = 1025
 INTERNAL_IPS = tuple()
 
 
-ENV_PATH = proj('.env')
+ENV_PATH = root('.env')
 
 
-PYTHON_PATHNAME = 'python2.6'
+PYTHON_PATHNAME = 'python2.7'
 
 try:
     from movies.settings.local import *

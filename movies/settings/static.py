@@ -1,10 +1,10 @@
-from .utils import root
+from .utils import proj
 
-STATIC_ROOT = root('static_media', 'static_root')
+STATIC_ROOT = proj('static_media', 'static_root')
 STATIC_URL = '/media/static/'
 
 STATICFILES_DIRS = (
-    root('static'),
+    proj('static'),
 )
 
 STATICFILES_FINDERS = (

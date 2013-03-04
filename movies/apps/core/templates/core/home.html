@@ -18,7 +18,10 @@
 
     <h1>Movies of the month:</h1>
     {% for movie in movies_of_the_month %}
-        {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}<br/>
+        {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}
+
+        {{ movie.get_image.url }}
+        <br/><br/>
     {% endfor %}
 
     <h1>Movies of the day history:</h1>
@@ -26,8 +29,9 @@
         {{ history.rated_day }}
         {% with movie=history.movie trailers=history.movie.trailer_set.all %}
             {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}<br/>
-            {{ movie.get_image_playable.0.url }}
+            {{ movie.get_image_playable.url }}
         {% endwith %}</br>
+        <br/><br/>
     {% endfor %}
 
     <h1>Latest news:</h1>
@@ -35,8 +39,8 @@
         {{ newsitem.title }} {{ newsitem.full_text }}
         {{ newsitem.get_image_playable.0.url }}
         {% if newsitem.get_image_playable.1 %}
-            It's trailer with url {{newsitem.get_image_playable.1 }}
+            It's trailer with url {{newsitem.get_image_playable.1url }}
         {% endif %}
-        </br>
+        </br><br/>
     {% endfor %}
 {% endblock %}

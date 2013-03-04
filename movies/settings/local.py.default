@@ -1,7 +1,7 @@
-from utils import proj
+from utils import proj, root
 
 # variables used to specify lessc include path. See __init__ for details
-ENV_PATH = proj('.env')
+ENV_PATH = root('.env')
 
 PYTHON_PATHNAME = 'python2.7'
 
