@@ -7,7 +7,7 @@ Developer readme
 Local deploy
 ============
 
-1. Install all requirements on system as described previously.
+1. Install all requirements on system as described in REQUIREMENTS.rst.
 
 2. Clone project to some dir::
 

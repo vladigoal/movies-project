@@ -9,7 +9,7 @@ Deploy
 
 Next steps describe project installation on staging or production server. If you'd like to setup project for local developmetn then please read DEV-README.rst
 
-1. Install all requirements on system as described previously.
+1. Install all requirements on system as described in REQUIREMENTS.rst
 2. Clone repository to server.
 3. cd to cloned repository.
 4. Setup virtual environment::
