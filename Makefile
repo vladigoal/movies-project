@@ -12,13 +12,11 @@ TEST_APP=core
 # targets
 #
 
-runserver:
+runserver: compress
 	@echo Starting $(PROJECT_NAME) ...
 	IS_DEV=1 $(MANAGE) runserver $(BIND_TO):$(RUNSERVER_PORT)
 
-run:
-	@echo Starting $(PROJECT_NAME) ...
-	IS_DEV=1 $(MANAGE) run_collecting $(BIND_TO):$(RUNSERVER_PORT)
+run: runserver
 
 mailserver:
 	python -m smtpd -n -c DebuggingServer $(BIND_TO):$(MAILSERVER_PORT)
