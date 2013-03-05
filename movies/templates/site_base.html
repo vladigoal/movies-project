@@ -90,7 +90,7 @@
             {% block nav %}
                 <ul class="nav main">
                     {% for item in menu_description.values %}
-                        {% include "blocks/menu-item.html" %}
+                        {% include "core/blocks/menu-item.html" %}
                     {% endfor %}
                     {% if user.is_authenticated %}
                     {% else %}

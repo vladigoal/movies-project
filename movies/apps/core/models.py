@@ -80,6 +80,18 @@ class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin):
             return shots[0].image
         return None
 
+    def get_all_images_playable(self):
+        images = []
+        if self.image:
+            images.append((self.image, False))
+        shots = self.movieshot_set.all()
+        if shots.count():
+            images.extend([(shot.image, False) for shot in shots])
+        trailers = self.trailer_set.all()
+        if trailers.count():
+            images.extend([(trailer.image, False) for trailer in trailers])
+        return images
+
 
 class MovieShot(ImagedModel, DummyUrlMixin):
     movie = models.ForeignKey(Movie)

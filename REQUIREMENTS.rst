@@ -31,7 +31,7 @@ Installing on ubuntu
 --------------------
 
 Run next command in terminal::
-  yes | sudo apt-get install git python-virtualenv mercurial libxml2-dev libxslt-dev python-dev libsqlite3-dev libjpeg-dev yui-compressor
+  sudo apt-get install git python-virtualenv mercurial libxml2-dev libxslt-dev python-dev libsqlite3-dev libjpeg-dev yui-compressor
 
 
 Installing on gentoo

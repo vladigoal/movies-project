@@ -29,7 +29,10 @@
         {{ history.rated_day }}
         {% with movie=history.movie trailers=history.movie.trailer_set.all %}
             {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}<br/>
-            {{ movie.get_image_playable.url }}
+            {% for image in movie.get_all_images_playable %}
+                {{ image.0.url }}
+                is playable: {{ image.1 }}
+            {% endfor %}
         {% endwith %}</br>
         <br/><br/>
     {% endfor %}
