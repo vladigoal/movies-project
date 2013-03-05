@@ -44,6 +44,7 @@ This rules are for real production projects. You may follow them if you like. Th
 * use i18n everywhere. use trans in templates and views and gettext in JS
 * use relative imports where possible
 * do not use {% url viewname obj.pk %} . Instead setup get_absolute_url for model::
+
     def get_absolute_url(self):
         return ('movies.apps.core.views.profile', [unicode(self.user.username)])
 
@@ -55,15 +56,16 @@ This rules are for real production projects. You may follow them if you like. Th
 * autocomplete:  https://github.com/crucialfelix/django-ajax-selects or there will be custom implemintation using bootstrap js library. Еще не решено
 * minification with django-compressor (наверное последний). Минификатор использовать обязательно, т.к. он будет на продакшене, и при минификации возможны проблемы (всякие глобальные переменные и прочее).
 * do not use '{{ STATIC_URL }}/path' instead use tag 'static'::
-  {% load static from staticfiles %}
-  {% static "path" %}
+
+    {% load static from staticfiles %}
+    {% static "path" %}
 * navbar menu item classes can be populated from core.context_processors
 
 
 Usefull helpers
 ===============
 
-cache_utils2:
+cache_utils2::
 
   from cache_utils2 import cached, invalidate
   
@@ -78,7 +80,7 @@ Template tags
 libs
 ----
 
-* bootstraping forms;
+* bootstraping forms::
 
   {% load bootstrap %}
   {{ form|bootstrap }}
@@ -146,6 +148,7 @@ Local problems with minification and js debugging
 =================================================
 
 To disable js minification but keep django tags substitution you can add this to settings/local.py::
+
   COMPRESS_CSS_FILTERS = [
       'compressor.filters.template.TemplateFilter',
       'compressor.filters.css_default.CssAbsoluteFilter',
