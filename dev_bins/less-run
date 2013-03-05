@@ -6,4 +6,11 @@ PROJ_ROOT=`dirname $SCRIPT_ROOT`
 
 SCRIPT_PATH=$SCRIPT_ROOT/less/bin/lessc
 
-/usr/bin/env nodejs $SCRIPT_PATH || /usr/bin/env node $SCRIPT_PATH
+if which node >/dev/null 2>&1; then
+    node $SCRIPT_PATH $*;
+elif which nodejs >/dev/null 2>&1; then
+    nodejs $SCRIPT_PATH $*
+else
+    echo "Please install nodejs" >&2
+    exit 1
+fi;
