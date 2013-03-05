@@ -2,7 +2,7 @@ Django==1.4.3
 South
 wsgiref
 sorl-thumbnail
-PIL
+pillow
 django-annoying
 django-compressor==1.2
 lxml
