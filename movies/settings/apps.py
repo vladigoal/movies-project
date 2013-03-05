@@ -9,7 +9,7 @@ INSTALLED_APPS = [
     'django.contrib.webdesign',
     'django.contrib.formtools',
     'django.contrib.humanize',
-    'django.contrib.gis',
+#    'django.contrib.gis',
     'django.contrib.comments',
 ]
 
