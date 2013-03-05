@@ -10,7 +10,6 @@ Local deploy
 1. Install all requirements on system as described in REQUIREMENTS.rst.
 
 2. Clone project to some dir::
-
      mkdir -p some/path
      cd some/path
      git clone git@github.com:42cc/movies-project.git
@@ -19,10 +18,10 @@ Local deploy
      virtualenv --no-site-packages -p python2.7 .env
 
 4. Run following commands::
-  pip install -r requirements/dev.txt 
-  cp Makefile.def.default Makefile.def
-  cp movies/settings/local.py.default movies/settings/local.py
-  make initproject
+     pip install -r requirements/dev.txt 
+     cp Makefile.def.default Makefile.def
+     cp movies/settings/local.py.default movies/settings/local.py
+     make initproject
 
 .. note::
    If you have chosen different name for virtualenv directory or using python other than 2.7
