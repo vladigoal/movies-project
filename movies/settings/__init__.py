@@ -39,7 +39,7 @@ if DEBUG:
 if not IS_FAST_TESTING:
     LESS_INCLUDES = '%s/lib/%s/site-packages/pinax_theme_bootstrap/static/bootstrap/less/' % (ENV_PATH, PYTHON_PATHNAME)
     if not LESS_BIN:
-        LESS_BIN = root('dev_bins/less/bin/lessc')
+        LESS_BIN = root('dev_bins/less-run')
 
     COMPRESS_PRECOMPILERS = (
         ('text/less', '%s --include-path=%s {infile} {outfile}' % (LESS_BIN, LESS_INCLUDES)),
