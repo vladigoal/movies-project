@@ -1,22 +1,23 @@
 {% load ifsetting_tag %}
 {% load i18n %}
 <script type="text/javascript">
-    window.AW_DEBUG = false;
+    window.movies = {};
+    window.movies.debug = false;
     {% ifsetting DEBUG %}
-        window.AW_DEBUG = true;
+        window.movies.debug = true;
     {% endifsetting %}
     window.movies = {};
     window.movies.ready = false;
     window.movies.site_url = "{{ SITE_URL }}";
 
     window.debug_log = function debug_log(){
-        if (window.AW_DEBUG){
+        if (window.movies.debug){
             console.log(arguments)
         }
     }
 
     $(window).ready(function() {
-        window.AW.ready = true;
+        window.movies.ready = true;
     });
 
     var trans_messages = {
