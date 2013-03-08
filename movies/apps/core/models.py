@@ -118,7 +118,7 @@ class NewsItem(models.Model, DummyUrlMixin, AutoProcessFieldsMixin):
         help_text=_("Auto populated"))
 
     full_text = models.TextField()
-    short_text = models.CharField(max_length=100, blank=True, help_text=_("Auto populated"))
+    short_text = models.TextField(blank=True, help_text=_("Auto populated"))
 
     movie = models.ForeignKey(Movie, blank=True, null=True)
     chosen_image = models.ForeignKey(MovieShot, blank=True, null=True)
@@ -131,10 +131,6 @@ class NewsItem(models.Model, DummyUrlMixin, AutoProcessFieldsMixin):
 
     def __unicode__(self):
         return self.title
-
-    def __init__(self, *args, **kwargs):
-        super(NewsItem, self).__init__(*args, **kwargs)
-        self._prev_full_text = self.full_text
 
     def clean(self):
         if self.movie:
