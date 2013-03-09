@@ -112,7 +112,7 @@ class NewsItem(models.Model, DummyUrlMixin, AutoProcessFieldsMixin):
     WORD_DELIMITERS = (u" ", u"," u".")
 
     creation_time = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100, unique=True)
+    title = models.CharField(max_length=100)
     slug = models.SlugField(
         _("Name to be used in urls"), max_length=100, unique=True, blank=True,
         help_text=_("Auto populated"))
