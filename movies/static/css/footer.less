@@ -1,0 +1,120 @@
+footer{
+    height: 264px;
+
+    .container{
+        width: 988px;
+        height: 264px;
+        padding-left: 12px;
+        background: url('@{url}footer_bg.png') no-repeat right bottom;
+
+        .info{
+            float: left;
+            width: 147px;
+            margin: 48px 49px 0 55px;
+
+            .logo{
+                margin-left: 13px;
+                padding-bottom: 16px;
+                border-bottom: @footer_border;
+            }
+            
+            .text{
+                margin-right: 13px;
+                padding-bottom: 41px;
+                text-align: center; 
+                color: @footer_gray;
+                line-height: 14px;
+                font-style: italic;
+                font-size: 12px;
+                
+            }
+
+            .social{
+                list-style: none;
+                padding: 27px 0 0 16px;
+                margin-left: 13px;
+                border-top: @footer_border;
+
+                li{
+                    float: left;
+                    margin-right: 7px;
+                }
+            }
+        }
+
+
+        .nav{
+            float: left;
+            /*width: 703px;*/
+            margin-top: 50px;
+
+            li{
+                float: left;
+                //width: 150px;
+
+                &.fmenu-item{
+                    margin-right: 38px;
+                }
+                &.nofloat{
+                    float: none;
+                    margin-right: 0;
+                    padding-left: 8px;
+
+                    a{
+                        margin-bottom: 10px;      
+                    }
+                }
+
+                a{
+                    margin-bottom: 30px;
+                    color: #5293c2;
+                    font-size: 18px;
+                    font-weight: bold;
+                    line-height: 18px;
+                    text-transform: uppercase;
+
+                    &:hover{
+                        background: none;
+                    }
+                }
+                ul{
+                    list-style: none;
+                    margin-left: 2px;
+
+                    .submenu-item{
+                        float: none;
+                        width: 125px;
+                        height: 25px;
+                        padding-right: 17px;
+                        margin-top: 5px;
+                        border-bottom: @footer_border;
+
+                        a{
+                            float: left;
+                            margin-bottom: 0;
+                            color: @footer_gray;
+                            font-size: 13px;
+                        }
+                        span{
+                            float: right;
+                            display: block;
+                            height: 11px;
+                            padding-top: 12px;
+                            color: #4f4f4f;
+                            font-size: 11px;
+                            line-height: 11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer .social:after{
+    content:'.';
+    clear:both;
+    height: 0;
+    display: block;
+    visibility: hidden;
+}

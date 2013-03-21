@@ -1,5 +1,6 @@
 {% load url from future %}
 <li class="{{ item.classes|join:' ' }}"><a href="{% if item.url_names %}{% url item.url_names.0 %}{% else %}#{% endif %}">{{ item.title }}</a> {% if item.updates %}({{ item.updates }}){% endif %}
+{% comment %}
 {% if item.submenu %}
     <ul class="">
         {% for item in item.submenu.values %}
@@ -10,3 +11,4 @@
     </ul>
 {% endif %}
 </li>
+{% endcomment %}

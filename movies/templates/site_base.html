@@ -77,14 +77,9 @@
 {% block body_id %}{% endblock %}
 
 {% block topbar %}
-    <div class="offset1">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </a>
+    <div class="topbar">
         {% block site_brand %}
-            <a class="brand" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}"/></a>
+            <a class="brand" href="{% url 'home' %}"><img src="{% static 'img/header/logo.png' %}"/></a>
         {% endblock %}
         <div class="nav-collapse">
             {% block nav %}
@@ -92,12 +87,18 @@
                     {% for item in menu_description.values %}
                         {% include "core/blocks/menu-item.html" %}
                     {% endfor %}
-                    {% if user.is_authenticated %}
-                    {% else %}
-                    {% endif %}
                 </ul>
             {% endblock %}
-            {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+            {% comment %}{% block account_bar %}{% include "_account_bar.html" %}{% endblock %}{% endcomment %}
+            <form class="form-search pull-right">
+                <div class="input-append">
+                    <input type="text" placeholder="Search box">
+                    <!--button class="btn" type="button">Go!</button-->
+                    <button type="submit" class="btn btn-link">
+                      <i class="icon-search icon"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock %}
