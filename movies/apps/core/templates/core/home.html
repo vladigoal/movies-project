@@ -14,6 +14,20 @@
         {% endfor %}
         rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}
     {% endwith %}
+{% endblock %}
+{% comment %}
+{% block content %}
+    {% with day_movie=movies_of_the_day.0 %}
+        <h1>Movie of the day</h1>
+        {{ day_movie.title }}<br/>
+        {{ day_movie.description }}<br/>
+        {% for trailer in movies_of_the_day.0.trailer_set.all %}
+            {% thumbnail trailer.image "200" as image %}
+                <img src="{{ image.url }}"><br/>
+            {% endthumbnail %}
+        {% endfor %}
+        rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}
+    {% endwith %}
 
 
     <h1>Movies of the month:</h1>
@@ -47,3 +61,4 @@
         </br><br/>
     {% endfor %}
 {% endblock %}
+{% endcomment %}

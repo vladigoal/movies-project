@@ -29,7 +29,7 @@ def site_url(request):
 def menu_status(request):
     menu_dict = OrderedDict([
         ('dashboard',
-         {'url_names': ['home'], 'title': _('Dashboard'), 'classes': ['mainmenu-item'],}
+         {'url_names': ['home'], 'title': _(' My dashboard'), 'classes': ['mainmenu-item'],}
         ),
         ('movies',
          {'url_names': [], 'title': _('Movies'), 'classes': ['mainmenu-item'],}
