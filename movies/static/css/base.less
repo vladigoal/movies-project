@@ -3,6 +3,7 @@
 @import "mixins.less";
 @import "fonts.less";
 
+@url: '/media/static/img/';
 @footer_gray: #868686;
 @footer_border: 1px solid #373737;
 /*.container{
@@ -23,7 +24,7 @@ footer{
         width: 988px;
         height: 264px;
         padding-left: 12px;
-        background: url('/media/static/img/footer_bg.png') no-repeat right bottom;
+        background: url('@{url}footer_bg.png') no-repeat right bottom;
 
         .info{
             float: left;
@@ -63,7 +64,7 @@ footer{
 
         .nav{
             float: left;
-            width: 703px;
+            /*width: 703px;*/
             margin-top: 50px;
 
             li{
@@ -76,9 +77,10 @@ footer{
                 &.nofloat{
                     float: none;
                     margin-right: 0;
+                    padding-left: 8px;
 
                     a{
-                        margin-bottom: 15px;      
+                        margin-bottom: 10px;      
                     }
                 }
 
@@ -100,18 +102,26 @@ footer{
 
                     .submenu-item{
                         float: none;
-                        width: 142px;
-                        height: 21px;
-                        margin-top: 8px;
-                        color: #4f4f4f;
-                        font-size: 10px;
+                        width: 125px;
+                        height: 25px;
+                        padding-right: 17px;
+                        margin-top: 5px;
                         border-bottom: @footer_border;
 
                         a{
+                            float: left;
                             margin-bottom: 0;
                             color: @footer_gray;
                             font-size: 13px;
-                            line-height: 20px;
+                        }
+                        span{
+                            float: right;
+                            display: block;
+                            height: 11px;
+                            padding-top: 12px;
+                            color: #4f4f4f;
+                            font-size: 11px;
+                            line-height: 11px;
                         }
                     }
                 }
