@@ -118,7 +118,23 @@
             <footer>
                 <div class="container">
                     {% block footer %}
-
+                        <div class="info">
+                            <div class="logo">
+                                <img src="{% static 'img/footer_logo.png' %}"/>
+                            </div>
+                            <div class="text">
+                                Laos, alongside many of its Southeast Asian neighbours, is well known.
+                            </div>
+                            <ul class="social">
+                                <li><a href="{% url 'home' %}"><img src="{% static 'img/footer_fb_icon.png' %}"></a></li>
+                                <li><a href="{% url 'home' %}"><img src="{% static 'img/footer_tw_icon.png' %}"></a></li>
+                                <li><a href="{% url 'home' %}"><img src="{% static 'img/footer_rss_icon.png' %}"></a></li>
+                            </ul>
+                        </div>
+                        
+                        {% block footer_nav %}
+                            {% include "core/blocks/footer-menu.html" %}
+                        {% endblock %}
                     {% endblock %}
                 </div>
             </footer>

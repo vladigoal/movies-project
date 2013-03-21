@@ -1,0 +1,43 @@
+{% comment %}
+<ul class="nav">
+    {% for item in menu_description.values %}
+        {% include "core/blocks/menu-item.html" %}
+    {% endfor %}
+</ul>
+{% endcomment %}
+
+<ul class="nav">
+    <li class="fmenu-item">
+        <a href="/core/">My Dashboard</a> 
+        <ul class="">
+            <li class="submenu-item"><a href="/core/">My dashboard</a> 35</li>              
+            <li class="submenu-item"><a href="#">My films</a> 248</li>               
+            <li class="submenu-item"><a href="#">My likes</a> 18</li>
+            <li class="submenu-item"><a href="#">My followings</a> </li>
+        </ul>
+
+    </li>
+    <li class="fmenu-item">
+        <a href="#">Movies</a> 
+        <ul class="">
+           <li class="submenu-item"><a href="#">Top TV shows</a></li>
+            <li class="submenu-item"><a href="#">Last updates</a></li>
+            <li class="submenu-item"><a href="#">Articles</a></li>
+            <li class="submenu-item"><a href="#">News</a></li> 
+        </ul>
+    </li>
+    <li class="fmenu-item">
+        <a href="#">TV</a> 
+        <ul class="">
+           <li class="submenu-item"><a href="#">Top tv shows</a></li>
+            <li class="submenu-item"><a href="#">Last updates</a></li>
+            <li class="submenu-item"><a href="#">Articles</a></li>
+            <li class="submenu-item"><a href="#">News</a></li>
+        </ul>
+    </li>
+        
+    <li class="fmenu-item nofloat"><a href="#">Trailers</a></li>
+    <li class="fmenu-item nofloat"><a href="#">Photos</a></li>
+    <li class="fmenu-item nofloat"><a href="#">Contacts</a></li>
+    
+</ul>

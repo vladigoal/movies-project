@@ -3,3 +3,127 @@
 @import "mixins.less";
 @import "fonts.less";
 
+@footer_gray: #868686;
+@footer_border: 1px solid #373737;
+/*.container{
+    width: 998px;
+    margin-left: 12px;
+    background: #212121;
+}*/
+
+.container{
+    width: 1000px;
+    background: #e5e2e2;
+}
+
+footer{
+    height: 264px;
+
+    .container{
+        width: 988px;
+        height: 264px;
+        padding-left: 12px;
+        background: url('/media/static/img/footer_bg.png') no-repeat right bottom;
+
+        .info{
+            float: left;
+            width: 147px;
+            margin: 48px 49px 0 55px;
+
+            .logo{
+                margin-left: 13px;
+                padding-bottom: 16px;
+                border-bottom: @footer_border;
+            }
+            
+            .text{
+                margin-right: 13px;
+                padding-bottom: 41px;
+                text-align: center; 
+                color: @footer_gray;
+                line-height: 14px;
+                font-style: italic;
+                font-size: 12px;
+                
+            }
+
+            .social{
+                list-style: none;
+                padding: 27px 0 0 16px;
+                margin-left: 13px;
+                border-top: @footer_border;
+
+                li{
+                    float: left;
+                    margin-right: 7px;
+                }
+            }
+        }
+
+
+        .nav{
+            float: left;
+            width: 703px;
+            margin-top: 50px;
+
+            li{
+                float: left;
+                //width: 150px;
+
+                &.fmenu-item{
+                    margin-right: 38px;
+                }
+                &.nofloat{
+                    float: none;
+                    margin-right: 0;
+
+                    a{
+                        margin-bottom: 15px;      
+                    }
+                }
+
+                a{
+                    margin-bottom: 30px;
+                    color: #5293c2;
+                    font-size: 18px;
+                    font-weight: bold;
+                    line-height: 18px;
+                    text-transform: uppercase;
+
+                    &:hover{
+                        background: none;
+                    }
+                }
+                ul{
+                    list-style: none;
+                    margin-left: 2px;
+
+                    .submenu-item{
+                        float: none;
+                        width: 142px;
+                        height: 21px;
+                        margin-top: 8px;
+                        color: #4f4f4f;
+                        font-size: 10px;
+                        border-bottom: @footer_border;
+
+                        a{
+                            margin-bottom: 0;
+                            color: @footer_gray;
+                            font-size: 13px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer .social:after{
+    content:'.';
+    clear:both;
+    height: 0;
+    display: block;
+    visibility: hidden;
+}
