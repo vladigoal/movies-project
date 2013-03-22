@@ -1,14 +1,6 @@
 {% load url from future %}
-<li class="{{ item.classes|join:' ' }}"><a href="{% if item.url_names %}{% url item.url_names.0 %}{% else %}#{% endif %}">{{ item.title }}</a> {% if item.updates %}({{ item.updates }}){% endif %}
-{% comment %}
-{% if item.submenu %}
-    <ul class="">
-        {% for item in item.submenu.values %}
-            {% with template_name="core/blocks/menu-item.html" %} {# this trick allows recursive use of templates #}
-                {% include template_name %}
-            {% endwith %}
-        {% endfor %}
-    </ul>
+
+{% if item.top_menu %}
+    <li class="{{ item.classes.0 }}"><a href="{% if item.url_names %}{% url item.url_names.0 %}{% else %}#{% endif %}">{{ item.title }}</a> {% if item.updates %}({{ item.updates }}){% endif %}
+    </li>
 {% endif %}
-</li>
-{% endcomment %}

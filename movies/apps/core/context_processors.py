@@ -29,19 +29,22 @@ def site_url(request):
 def menu_status(request):
     menu_dict = OrderedDict([
         ('dashboard',
-         {'url_names': ['home'], 'title': _(' My dashboard'), 'classes': ['mainmenu-item'],}
+         {'url_names': ['home'], 'title': _(' My dashboard'), 'classes': ['menu-item'], 'top_menu': True,}
         ),
         ('movies',
-         {'url_names': [], 'title': _('Movies'), 'classes': ['mainmenu-item'],}
+         {'url_names': [], 'title': _('Movies'), 'classes': ['menu-item'], 'top_menu': True,}
         ),
         ('tv',
-         {'url_names': [], 'title': _('TV'), 'classes': ['mainmenu-item'],}
+         {'url_names': [], 'title': _('TV'), 'classes': ['menu-item'], 'top_menu': True,}
         ),
         ('trailers',
-         {'url_names': [], 'title': _('Trailers'), 'classes': ['mainmenu-item'],}
+         {'url_names': [], 'title': _('Trailers'), 'classes': ['menu-item', 'nofloat'], 'top_menu': True,}
         ),
         ('photos',
-         {'url_names': [], 'title': _('Photos'), 'classes': ['mainmenu-item'],}
+         {'url_names': [], 'title': _('Photos'), 'classes': ['menu-item', 'nofloat'], 'top_menu': True,}
+        ),
+        ('contacts',
+         {'url_names': [], 'title': _('Contacts'), 'classes': ['menu-item', 'nofloat'], 'top_menu': False,}
         ),
     ])
     dashboard_submenu = OrderedDict([
