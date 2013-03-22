@@ -1,36 +1,15 @@
-<ul class="nav">
-    <li class="fmenu-item">
-        <a href="/core/">My Dashboard</a> 
-        <ul class="">
-            <li class="submenu-item"><a href="#">My dashboard</a> <span>35</span></li>              
-            <li class="submenu-item"><a href="#">My films</a> <span>248</span></li>               
-            <li class="submenu-item"><a href="#">My likes</a> <span>18</span></li>
-            <li class="submenu-item"><a href="#">My followings</a> </li>
-        </ul>
+{% load url from future %}
+{% if not item.classes.1 %}
+    <li class="{{ item.classes|join:' ' }}"><a href="{% if item.url_names %}{% url item.url_names.0 %}{% else %}#{% endif %}">{{ item.title }}</a> {% if item.updates %}({{ item.updates }}){% endif %}
 
-    </li>
-    <li class="fmenu-item">
-        <a href="#">Movies</a> 
+    {% if item.submenu %}
         <ul class="">
-           <li class="submenu-item"><a href="#">Top TV shows</a></li>
-            <li class="submenu-item"><a href="#">Last updates</a></li>
-            <li class="submenu-item"><a href="#">Articles</a></li>
-            <li class="submenu-item"><a href="#">News</a></li> 
+            {% for item in item.submenu.values %}
+                {% with template_name="core/blocks/footer-menu.html" %} {# this trick allows recursive use of templates #}
+                    {% include template_name %}
+                {% endwith %}
+            {% endfor %}
         </ul>
+    {% endif %}
     </li>
-    <li class="fmenu-item">
-        <a href="#">TV</a> 
-        <ul class="">
-           <li class="submenu-item"><a href="#">Top tv shows</a></li>
-            <li class="submenu-item"><a href="#">Last updates</a></li>
-            <li class="submenu-item"><a href="#">Articles</a></li>
-            <li class="submenu-item"><a href="#">News</a></li>
-        </ul>
-    </li>        
-</ul>
-
-<ul class="nav">
-    <li class="fmenu-item nofloat"><a href="#">Trailers</a></li>
-    <li class="fmenu-item nofloat"><a href="#">Photos</a></li>
-    <li class="fmenu-item nofloat"><a href="#">Contacts</a></li>
-</ul>
+{% endif %}

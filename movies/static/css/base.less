@@ -2,78 +2,8 @@
 @import "variables_override.less";
 @import "mixins.less";
 @import "fonts.less";
-//@import "header.less";
+@import "header.less";
 @import "footer.less";
-
-
-.navbar-fixed-top{
-    position: static;
-    left: auto;
-    right: auto;
-    top: auto;
-    z-index: auto;
-
-    .navbar-inner{
-        border: 0;
-        box-shadow: none;
-        background: none;
-
-        .container{
-            width: 1000px;
-            
-
-            .topbar{
-                width: 920px;
-                height: 44px;
-                margin-top: 22px;
-                margin-left: 15px;
-                padding-left: 65px;
-                background: url('@{url}header/bar_bg.png') no-repeat right bottom;
-            
-
-                .nav{
-                    margin-left: 80px;
-
-                    li{
-                        margin: 10px 0;
-                        border-right: 1px solid #393939;
-
-                        a{
-                            color: #fff;
-                            text-shadow: 1px 1px #000;
-                            padding: 1px 10px 2px 10px;
-                        }
-                    }
-                    
-                }
-
-                .form-search{
-                    .input-append{
-                        position: relative;
-                        margin: 8px 33px 8px 0;
-
-                        input{
-                            width: 155px;
-                            padding: 4px 40px 4px 6px;
-                            font-size: 12px;
-                            color: #242424;
-                            border: 0;
-                            border-radius: 3px;
-                        }
-                        button{
-                            position: absolute;
-                            right: 0;
-                            top: 0;
-                            z-index: 100;
-                        }
-                    }
-
-                }
-            }
-        }
-
-    }    
-}
 
 
 body{
@@ -82,5 +12,4 @@ body{
 
 .container{
     width: 1000px;
-    background: #e5e2e2;
 }
