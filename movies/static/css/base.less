@@ -2,9 +2,145 @@
 @import "variables_override.less";
 @import "mixins.less";
 @import "fonts.less";
-@import "header.less";
+//@import "header.less";
 @import "footer.less";
 
+
+header{
+    .container{
+        width: 1000px;
+        height: 488px;
+        background: url('@{url}header/pattern.jpg') 0 0 no-repeat;
+        
+        .navbar{
+            margin-bottom: 0;
+
+            .navbar-inner{
+                padding: 0;
+                .reset-filter();
+                border: 0;
+                box-shadow: none;
+                background: none;
+
+                .topbar{
+                    width: 920px;
+                    height: 44px;
+                    margin-top: 22px;
+                    margin-left: 15px;
+                    padding-left: 65px;
+                    background: url('@{url}header/bar_bg.png') no-repeat right bottom;
+
+                    .nav-collapse{
+                        float: left;
+                        width: 652px;
+                        height: 44px;
+                        margin-left: 80px;
+
+                        li{
+                            margin: 10px 0;
+                            border-left: 1px solid #393939;
+
+                            &:first-child{ border-left: 0;}
+
+                            a{
+                                color: #fff;
+                                text-shadow: 1px 1px #000;
+                                padding: 1px 10px 2px 10px;
+
+                                &:hover{
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        
+                    }
+
+                    .form-search{
+                        .input-append{
+                            position: relative;
+                            margin: 8px 0;
+
+                            input{
+                                width: 147px;
+                                padding: 4px 40px 4px 14px;
+                                font-size: 12px;
+                                color: #242424;
+                                border: 0;
+                                border-radius: 3px;
+                            }
+                            button{
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                z-index: 100;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }    
+
+        .day_wrapper{
+            position: relative;
+            width: 692px;
+            height: 365px;
+            margin: 52px 128px 17px 189px;
+
+            .poster{
+                position: relative;
+                width: 229px;
+                height: 317px;
+                background: url('@{url}header/poster_splash.png') 0 0 no-repeat;
+
+                .shine{
+                    position: absolute;
+                    left: 2px;
+                    top: 3px;
+                    width: 48px;
+                    height: 309px;
+                    background: url('@{url}header/poster_shine.png') 0 0 no-repeat;
+                }
+                .image{
+                    float: left;
+                    width: 207px;
+                    height: 303px; 
+                    margin: 6px 0 0 2px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            }
+            .stars{
+                float: left;
+                list-style: none;
+                width: 90px;
+                margin: 16px 0 0 63px;
+
+                li{
+                    float: left;
+                    width: 18px;
+                    height: 18px;
+                    background-repeat: no-repeat;
+                    background-position: 0 0 ;
+                    background-image: url('@{url}header/star.png');
+
+                    &.hover{
+                        background-position: 0 -18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.day_wrapper .stars:after{
+    content:'.';
+    clear:both;
+    height: 0;
+    display: block;
+    visibility: hidden;
+}
 
 body{
     padding: 0;

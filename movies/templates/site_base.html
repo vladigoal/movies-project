@@ -30,6 +30,7 @@
     {% block extra_head_js %}
         {% compress js %}
             <script src="{% static 'js/libs/jquery-1.8.1.js' %}"></script>
+            <script src="{% static 'js/base.js' %}"></script>
             {# ajax_select and friends #}
             <script src="{% static 'js/libs/ui/jquery.ui.core.js' %}"></script>
             <script src="{% static 'js/libs/ui/jquery.ui.widget.js' %}"></script>
@@ -78,9 +79,9 @@
 
 {% block topbar_base %}
     <header>
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="container">
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-inner"> 
                     {% block topbar %}
                         <div class="topbar">
                             {% block site_brand %}
@@ -109,6 +110,30 @@
                     {% endblock %}
                 </div>
             </div>
+        
+        <div class="day_wrapper">
+            <div class="poster">
+                <div class="shine"></div>            
+                <div class="image" style="background-image: url('/media/static/img/films/dexter.jpg');"></div>
+                <!--img src="/media/static/img/films/dexter.jpg"-->
+                <!--img src="{% static 'img/films/dexter.jpg' %}"/-->
+                {% comment %}
+                {% thumbnail "/media/static/img/films/dexter.jpg" "200x200" crop="center" as im %}
+                    <img src="{{ im.url }}">
+                {% endthumbnail %}
+                {% endcomment %}
+
+            </div>
+
+            <ul class="stars">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
         </div>
     </header>
 {% endblock %}
