@@ -2,12 +2,313 @@
 @import "variables_override.less";
 @import "mixins.less";
 @import "fonts.less";
-@import "header.less";
+//@import "header.less";
 @import "footer.less";
 
+@blueText: #5293c2;
+@url: '/media/static/img/';
+@footer_gray: #868686;
+@footer_border: 1px solid #373737;
+
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("HelveticaNeueLTStd-Roman"),
+       local("HelveticaNeueLTStd-Roman"),
+       url("/media/static/fonts/HelveticaNeueLTStd-Roman.otf") format("opentype");
+}
+@font-face {
+  font-family: "Helvetica Neue Bold";
+  src: local("HelveticaNeueLTStd-Md"),
+       local("HelveticaNeueLTStd-Md"),
+       url("/media/static/fonts/HelveticaNeueLTStd-Md.otf") format("opentype");
+}
+
+header{
+    .container{
+        width: 1000px;
+        //height: 488px;
+        
+        .navbar{
+            margin-bottom: 0;
+
+            .navbar-inner{
+                padding: 0;
+                .reset-filter();
+                border: 0;
+                box-shadow: none;
+                background: none;
+
+                .topbar{
+                    width: 920px;
+                    height: 44px;
+                    margin-top: 22px;
+                    margin-left: 15px;
+                    padding-left: 65px;
+                    background: url('@{url}header/bar_bg.png') no-repeat right bottom;
+
+                    .nav-collapse{
+                        float: left;
+                        clear: none;
+                        width: 652px;
+                        height: 44px;
+                        margin-left: 80px;
+
+                        .nav{
+                            float: left;
+                            margin-bottom: 0;
+                            
+                            li{
+                                float: left;
+                                margin: 10px 0;
+                                border-left: 1px solid #393939;
+
+                                &:first-child{ border-left: 0;}
+
+                                a{
+                                    color: #fff;
+                                    text-shadow: 1px 1px #000;
+                                    padding: 1px 10px 2px 10px;
+                                    margin-bottom: 1px;
+
+                                    &:hover{
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .form-search{
+                        margin-bottom: 0;
+
+                        .input-append{
+                            position: relative;
+                            margin: 8px 0;
+
+                            input{
+                                width: 147px;
+                                padding: 4px 40px 5px 14px;
+                                font-size: 12px;
+                                color: #242424;
+                                border: 0;
+                                border-radius: 3px;
+                            }
+                            button{
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                z-index: 100;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }    
+
+        .day_wrapper{
+            width: 692px;
+            height: 365px;
+            margin: 52px 128px 5px 189px;
+
+            .poster_wrapper{
+                float: left;
+
+                .poster{
+                    position: relative;
+                    width: 229px;
+                    height: 317px;
+                    background: url('@{url}header/poster_splash.png') 0 0 no-repeat;
+
+                    .shine{
+                        position: absolute;
+                        left: 2px;
+                        top: 3px;
+                        width: 48px;
+                        height: 309px;
+                        background: url('@{url}header/poster_shine.png') 0 0 no-repeat;
+                    }
+                    .image{
+                        float: left;
+                        width: 207px;
+                        height: 303px; 
+                        margin: 6px 0 0 2px;
+                        background-color: @black;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                }
+                .stars{
+                    float: left;
+                    width: 90px;
+                    margin: 16px 0 0 63px;
+
+                    li{
+                        float: left;
+                        width: 18px;
+                        height: 18px;
+                        background-repeat: no-repeat;
+                        background-position: 0 0 ;
+                        background-image: url('@{url}header/star.png');
+
+                        &.hover{
+                            background-position: 0 -18px;
+                        }
+                    }
+                }
+            }
+            .desc{
+                position: relative;
+                float: left;
+                width: 430px;
+                height: 320px;
+                margin-left: 15px;
+
+                @marginLeft: 33px;
+                
+                h2, h3{
+                    margin: 0;
+                }
+
+                h3{ 
+                    margin-left: @marginLeft;
+                    color: @blueText;
+                    font-family: "Helvetica Neue Bold";
+                    font-size: 14px;
+                    line-height: 20px;
+                    text-transform: uppercase;
+                }
+                h2.name{
+                    margin-left: @marginLeft;
+                    color: #fff;
+                    font-size: 20px;
+                    font-weight: normal;
+                    line-height: 32px;
+                }
+                .day_arrows{
+                    position: absolute;
+                    left: 281px;
+                    top: 9px;
+
+                    a{
+                        float: left;
+                        display: block;
+                        width: 13px;
+                        height: 13px;
+                        background-repeat: no-repeat;
+                        background-image: url('@{url}header/day_arr.png');
+
+                        &.l{
+                            background-position: 0 0;
+                        }
+                        &.r{
+                            background-position: -13px 0;
+                        }
+                    }
+                }
+                .splash_text{
+                    width: 330px;
+                    height: 48px;
+                    margin-top: 13px;
+                    margin-left: @marginLeft;
+                    padding: 27px 20px 19px 20px;
+                    color: #979797;
+                    font-size: 12px;
+                    line-height: 16px;
+                    background: url('@{url}header/splash_text.png') 0 0 no-repeat;
+                }
+                .carousel_wrapper{
+                    position: relative;                    
+                    width: 439px;
+                    height: 122px;
+                    margin-top: 34px;
+
+                    .carousel-inner{
+                        width: 398px;
+                        height: 122px;
+                        margin: 0 33px;
+                        overflow: hidden;
+
+                        ul{
+                            margin: 0;
+
+                            .item{
+                                float: left;
+                                width: 162px;
+                                height: 115px;
+                                margin-right: 27px;
+                                padding: 4px 6px 3px 4px;
+                                background: url('@{url}header/trailer_splash.png') 0 0 no-repeat;
+
+                                .thumb{
+                                    float: left;
+                                    width: 162px;
+                                    height: 98px;
+                                    background-color: @black;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    .border-radius(4px);
+                                }
+                                a{
+                                    float: left;
+                                    color: #888888;
+                                    font-size: 12px;
+                                    line-height: 17px;
+                                    text-transform: uppercase;
+                                }
+                            } 
+                        }   
+                    }
+                    .arrow{
+                        outline: none;
+                        position: absolute;
+                        display: block;
+                        top: 44px;
+                        width: 21px;
+                        height: 24px;
+                        background-repeat: no-repeat;
+                        background-image: url('@{url}header/trailer_arr.png');
+                        outline: none;
+
+                        &.left{
+                            left: 0px;
+                            background-position: 0 0;
+
+                            &.hover{
+                                background-position: 0 -24px;
+                            }
+                        }
+                        &.right{
+                            right: 0px;
+                            background-position: -21px 0;
+
+                            &.hover{
+                                background-position: -21px -24px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.day_wrapper .stars:after, .nav.main:after{
+    content:'.';
+    clear:both;
+    height: 0;
+    display: block;
+    visibility: hidden;
+}
 
 body{
     padding: 0;
+
+    ul{
+        list-style: none;
+    }
 }
 
 .container{

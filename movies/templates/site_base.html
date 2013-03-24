@@ -30,6 +30,7 @@
     {% block extra_head_js %}
         {% compress js %}
             <script src="{% static 'js/libs/jquery-1.8.1.js' %}"></script>
+            <script src="{% static 'js/base.js' %}"></script>
             {# ajax_select and friends #}
             <script src="{% static 'js/libs/ui/jquery.ui.core.js' %}"></script>
             <script src="{% static 'js/libs/ui/jquery.ui.widget.js' %}"></script>
@@ -76,11 +77,12 @@
 
 {% block body_id %}{% endblock %}
 
+
 {% block topbar_base %}
     <header>
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="container">
+        <div class="container" style="{% block header_bg %}{% endblock %}">
+            <div class="navbar">
+                <div class="navbar-inner"> 
                     {% block topbar %}
                         <div class="topbar">
                             {% block site_brand %}
@@ -94,11 +96,9 @@
                                         {% endfor %}
                                     </ul>
                                 {% endblock %}
-                                {% comment %}{% block account_bar %}{% include "_account_bar.html" %}{% endblock %}{% endcomment %}
                                 <form class="form-search pull-right">
                                     <div class="input-append">
                                         <input type="text" placeholder="Search box">
-                                        <!--button class="btn" type="button">Go!</button-->
                                         <button type="submit" class="btn btn-link">
                                           <i class="icon-search icon"></i>
                                         </button>
@@ -109,9 +109,13 @@
                     {% endblock %}
                 </div>
             </div>
+            
+            {% block movie_of_the_day %}{% endblock %}
+
         </div>
     </header>
 {% endblock %}
+
 
 {% block body_base %}
     <div class="main-wrap">

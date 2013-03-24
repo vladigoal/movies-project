@@ -1,6 +1,55 @@
 {% extends 'site_base.html' %}
+{% load static from staticfiles %}
 {% load thumbnail %}
 
+{% block header_bg %}background: url({% static 'img/header/pattern.jpg' %}) 0 0 no-repeat;{% endblock %}
+
+{% block movie_of_the_day %}
+    <div class="day_wrapper">
+        <div class="poster_wrapper">
+            <div class="poster">
+                <div class="shine"></div>            
+                <div class="image" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter.jpg" "207x303" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+            </div>
+
+            <ul class="stars">
+                <li></li><li></li><li></li><li></li><li></li>
+            </ul>
+        </div>
+        <div class="desc">
+            <h3>Movie of the day</h3>
+            <h2 class="name">Metallica - Enter Sandman</h2>
+            <div class="splash_text">
+                Laos, alongside many of its Southeast Asian neighbours, is well known for producing counterfeit goods of all types, and with the world going technology crazy in the last few years.
+            </div>
+            <div class="day_arrows"><a href="#" class="l"></a><a href="#" class="r"></a></div>
+            <div id="carousel1" class="carousel_wrapper">
+                <div class="carousel-inner">
+                    <ul>
+                        <li class="item" id="it1">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr1.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Trailer #1</a>
+                        </li>
+                        <li class="item" id="it2">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr2.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Trailer #2</a>
+                        </li>
+                        <li class="item" id="it3">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr3.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Trailer #3</a>
+                        </li>
+                        <li class="item" id="it4">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr4.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Trailer #4</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="" class="arrow left"></a>
+                <a href="" class="arrow right"></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 {% block content %}
     {% with day_movie=movies_of_the_day.0 %}
@@ -8,6 +57,7 @@
         {{ day_movie.title }}<br/>
         {{ day_movie.description }}<br/>
         {% for trailer in movies_of_the_day.0.trailer_set.all %}
+            <span>{{ trailer.image.url }}</span>
             {% thumbnail trailer.image "200" as image %}
                 <img src="{{ image.url }}"><br/>
             {% endthumbnail %}
