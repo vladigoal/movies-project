@@ -25,45 +25,90 @@
             <div class="day_arrows"><a href="#" class="l"></a><a href="#" class="r"></a></div>
             <div id="carousel1" class="carousel_wrapper">
                 <div class="carousel-inner">
-                    <ul>
-                        <li class="item" id="it1">
+                    <ul class="items_list">
+                        <li class="item">
                             <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr1.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
                             <a href="#">Trailer #1</a>
                         </li>
-                        <li class="item" id="it2">
+                        <li class="item">
                             <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr2.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
                             <a href="#">Trailer #2</a>
                         </li>
-                        <li class="item" id="it3">
+                        <li class="item">
                             <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr3.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
                             <a href="#">Trailer #3</a>
                         </li>
-                        <li class="item" id="it4">
+                        <li class="item">
                             <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/dexter_tr4.jpg" "162x98" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
                             <a href="#">Trailer #4</a>
                         </li>
                     </ul>
                 </div>
-                <a href="" class="arrow left"></a>
-                <a href="" class="arrow right"></a>
+                <a href="" carousel="carousel1" class="arrow left"></a>
+                <a href="" carousel="carousel1" class="arrow right"></a>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
-    {% with day_movie=movies_of_the_day.0 %}
-        <h1>Movie of the day</h1>
-        {{ day_movie.title }}<br/>
-        {{ day_movie.description }}<br/>
-        {% for trailer in movies_of_the_day.0.trailer_set.all %}
-            <span>{{ trailer.image.url }}</span>
-            {% thumbnail trailer.image "200" as image %}
-                <img src="{{ image.url }}"><br/>
-            {% endthumbnail %}
-        {% endfor %}
-        rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}
-    {% endwith %}
+    {% block movies_of_the_day %}
+        <div class="month_wrapper">
+            <div class="top">
+                <h1 class="section_title">Movies of the month</h1>
+                <a href="" carousel="carousel2" class="arrow left"></a>
+                <a href="" carousel="carousel2" class="arrow right"></a>
+                <a href="" class="see_all">See All</a>
+            </div>
+            <div id="carousel2" class="carousel_wrapper">
+                <div class="carousel-inner">
+                    <ul class="items_list">
+                        <li class="item">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/harry_potter.jpg" "182x122" crop="center top" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Harry Potter</a>
+                            <div class="film_desc">
+                                <div class="text">Laos, alongside many of its Southeast Asian neighbours, is well known.</div>
+                                <span class="counter likes">165</span><span class="counter views">2, 350</span>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/transformers2.jpg" "182x122" crop="center top" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Transformers</a>
+                            <div class="film_desc">
+                                <div class="text">Laos, alongside many of its Southeast Asian neighbours, is well known.</div>
+                                <span class="counter likes">165</span><span class="counter views">2, 350</span>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/batman.jpg" "182x122" crop="center top" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Batman</a>
+                            <div class="film_desc">
+                                <div class="text">Laos, alongside many of its Southeast Asian neighbours, is well known.</div>
+                                <span class="counter likes">165</span><span class="counter views">2, 350</span>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/iron_man.jpg" "182x122" crop="center top" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Iron man</a>
+                            <div class="film_desc">
+                                <div class="text">Laos, alongside many of its Southeast Asian neighbours, is well known.</div>
+                                <span class="counter likes">165</span><span class="counter views">2, 350</span>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="thumb" style="background-image: url('{% thumbnail "http://video-sh.com.ua/images/42/hawaii.jpg" "182x122" crop="center top" as im %}{{ im.url }}{% endthumbnail %}');"></div>
+                            <a href="#">Hawaii five-0</a>
+                            <div class="film_desc">
+                                <div class="text">Laos, alongside many of its Southeast Asian neighbours, is well known.</div>
+                                <span class="counter likes">165</span><span class="counter views">2, 350</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--div class="notch"></div-->
+    {% endblock %}
 {% endblock %}
 {% comment %}
 {% block content %}
