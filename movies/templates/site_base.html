@@ -77,9 +77,10 @@
 
 {% block body_id %}{% endblock %}
 
+
 {% block topbar_base %}
     <header>
-        <div class="container">
+        <div class="container" style="{% block header_bg %}{% endblock %}">
             <div class="navbar">
                 <div class="navbar-inner"> 
                     {% block topbar %}
@@ -95,11 +96,9 @@
                                         {% endfor %}
                                     </ul>
                                 {% endblock %}
-                                {% comment %}{% block account_bar %}{% include "_account_bar.html" %}{% endblock %}{% endcomment %}
                                 <form class="form-search pull-right">
                                     <div class="input-append">
                                         <input type="text" placeholder="Search box">
-                                        <!--button class="btn" type="button">Go!</button-->
                                         <button type="submit" class="btn btn-link">
                                           <i class="icon-search icon"></i>
                                         </button>
@@ -110,33 +109,13 @@
                     {% endblock %}
                 </div>
             </div>
-        
-        <div class="day_wrapper">
-            <div class="poster">
-                <div class="shine"></div>            
-                <div class="image" style="background-image: url('/media/static/img/films/dexter.jpg');"></div>
-                <!--img src="/media/static/img/films/dexter.jpg"-->
-                <!--img src="{% static 'img/films/dexter.jpg' %}"/-->
-                {% comment %}
-                {% thumbnail "/media/static/img/films/dexter.jpg" "200x200" crop="center" as im %}
-                    <img src="{{ im.url }}">
-                {% endthumbnail %}
-                {% endcomment %}
-
-            </div>
-
-            <ul class="stars">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
+            
+            {% block movie_of_the_day %}{% endblock %}
 
         </div>
     </header>
 {% endblock %}
+
 
 {% block body_base %}
     <div class="main-wrap">
