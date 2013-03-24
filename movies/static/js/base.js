@@ -28,11 +28,12 @@ $(function(){
     /*<Carousel>*/
     can_click = true
     var carousels =  {}
+    //Init carousels
     carousel_init("carousel1", $("header"))
     carousel_init("carousel2", $(".month_wrapper"))
 
+    //Set listeners for all described carousels
     for (var c in carousels){
-        
         carousels[c].obj.find(".arrow").click(function(e){
             if(can_click){
                 var classes = $(this).attr("class").split(" ")
@@ -58,13 +59,13 @@ $(function(){
             }
             return false
         })
-        
+
         carousels[c].obj.find(".arrow").hover(function(){
             var classes = $(this).attr("class").split(" ")
             var crs_name = $(this).attr("carousel")
             carousels[crs_name].l_margin = parseInt(carousels[crs_name].obj.find(".items_list").css("margin-left"))
             if(classes.length > 1 && classes[1] == "right"){
-                if(Math.abs(carousels[crs_name].l_margin) < (carousels[crs_name].width) - carousels[crs].obj.find(".carousel-inner").outerWidth()){
+                if(Math.abs(carousels[crs_name].l_margin) < (carousels[crs_name].width) - carousels[crs_name].obj.find(".carousel-inner").outerWidth()){
                     $(this).addClass("hover")
                 }
             }else{
@@ -86,7 +87,6 @@ $(function(){
         carousels[crs_name].len = obj.find(".items_list li").length
         carousels[crs_name].width = carousels[crs_name].item_with * carousels[crs_name].len
         obj.find(".items_list").width(carousels[crs_name].width)
-        //console.log(obj.find("ul").html())
     }
 
     function resetClick(){
