@@ -67,17 +67,89 @@
                                     <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
                                 </div>
                             </li>
-                             
-
-                            
-                        
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
-        <!--div class="notch"></div-->
+        <div class="notch"></div>
     {% endblock %}
+
+
+
+    <div class="news_wrapper">
+        <div class="history">
+            <h1 class="section_title">Movies of the day history</h1> 
+            <ul>
+                {% for history in movies_of_the_day_history %}
+                    {% with movie=history.movie trailers=history.movie.trailer_set.all %}
+                        {% if movie.get_all_images_playable.0.2 %}
+                            <li class="carousel2{{ history.id }}">
+                                <div id="carousel2{{ history.id }}" class="carousel_wrapper">
+                                    <div class="carousel-inner">
+                                        <ul class="items_list">
+                                            {% for image in movie.get_all_images_playable %}
+                                                <li class="item">
+                                                    <div class="thumb" style="background-image: url('{% thumbnail image.0 "500x200" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                {{ history.rated_day|date:"j.m.Y" }}<a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> 
+                                <a href="" carousel="carousel2{{ history.id }}" class="arrow left">&lt;</a>
+                                <a href="" carousel="carousel2{{ history.id }}" class="arrow right">&gt;</a>
+                                <div class="film_desc">
+                                    <div class="text">{{ movie.description|truncatewords_html:12 }}</div>
+                                    <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
+                                </div>
+
+
+                                {% comment %}
+                                {% for image in movie.get_all_images_playable %}
+                                    {{ image.0.url }}
+                                    is playable: {{ image.1 }}
+                                {% endfor %}
+                                {% endcomment %}
+                            </li>
+                        {% else %}
+                            <li class="carousel2{{ history.id }} wide">
+                                <div id="carousel2{{ history.id }}" class="carousel_wrapper">
+                                    <div class="carousel-inner">
+                                        <ul class="items_list">
+                                            {% for image in movie.get_all_images_playable %}
+                                                <li class="item">
+                                                    <div class="thumb" style="background-image: url('{% thumbnail image.0 "227x144" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                {{ history.rated_day|date:"j.m.Y" }}<a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> 
+                                <a href="" carousel="carousel2{{ history.id }}" class="arrow left">&lt;</a>
+                                <a href="" carousel="carousel2{{ history.id }}" class="arrow right">&gt;</a>
+                                <div class="film_desc">
+                                    <div class="text">{{ movie.description|truncatewords_html:12 }}</div>
+                                    <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
+                                </div>
+
+
+                                {% comment %}
+                                {% for image in movie.get_all_images_playable %}
+                                    {{ image.0.url }}
+                                    is playable: {{ image.1 }}
+                                {% endfor %}
+                                {% endcomment %}
+                            </li>
+                        {% endif %}
+                        
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+                            
+                        
 
 {% endblock %}
 {% comment %}

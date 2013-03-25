@@ -10,7 +10,7 @@
 @url: '/media/static/img/';
 @footer_gray: #868686;
 @footer_border: 1px solid #373737;
-
+@marginLeftContent: 64px;
 
 body{
     padding: 0;
@@ -30,8 +30,6 @@ ul{
 
     .container{
         
-        @marginLeft: 64px;
-
         h1.section_title{
             float: left;
             margin: 0 12px 0 0;
@@ -57,7 +55,7 @@ ul{
                 width: 872px;
                 height: 19px;
                 margin-top: 67px;
-                margin-left: @marginLeft + 16;
+                margin-left: @marginLeftContent + 16;
 
                 .arrow{
                     float: left;
@@ -98,7 +96,7 @@ ul{
             }
             .carousel_wrapper{
                 float: left;
-                margin-left: @marginLeft + 16;   
+                margin-left: @marginLeftContent + 16;   
 
                 .carousel-inner{
                     width: 920px;
@@ -185,7 +183,67 @@ ul{
     background: url('@{url}notch_bg.png') 0 0 repeat-x #efefef;
 }
 
-.month_wrapper .top:after, .month_wrapper:after{
+.news_wrapper{
+    background-color: #efefef;
+
+    .history{
+        float: left;
+        width: 500px;
+        margin-top: 80px;
+        margin-left: @marginLeftContent;
+
+        h1.section_title{
+            width: 500px;
+            height: 20px;
+        }
+
+        li{
+            float: left;
+            width: 227px;
+
+            .carousel_wrapper{
+                float: left;
+                width: 100%;
+                
+                .carousel-inner{
+                    width: 100%;
+                    height: 201px;
+                    overflow: hidden;
+
+                    .items_list{
+                        
+                        .item{
+                            float: left;
+                            width: 227px;
+                            height: 144px;
+
+                            .thumb{
+                                width: 100%;
+                                height: 100%;
+                                background-color: @black;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                border: 1px solid #9B9B9B;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.wide{
+                width: 500px;
+
+                .item{
+                    width: 500px !important;
+                    height: 200px !important;
+                }
+            }
+
+        }
+    }
+}
+
+.month_wrapper .top:after, .month_wrapper:after, .news_wrapper:after{
     content:'.';
     clear:both;
     height: 0;
