@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 """
 Core models.
 """
@@ -81,9 +82,13 @@ class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin):
         return None
 
     def get_all_images_playable(self):
+        if (self.image_width / self.image_height) > 2.05:
+            wide = False
+        else:
+            wide = True
         images = []
         if self.image:
-            images.append((self.image, False))
+            images.append((self.image, False, wide))
         shots = self.movieshot_set.all()
         if shots.count():
             images.extend([(shot.image, False) for shot in shots])

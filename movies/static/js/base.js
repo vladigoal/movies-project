@@ -31,6 +31,10 @@ $(function(){
     //Init carousels
     carousel_init("carousel1", $("header"))
     carousel_init("carousel2", $(".month_wrapper"))
+    $(".news_wrapper .history .carousel_wrapper").each(function(){
+        carousel_init($(this).attr("id"), $("."+$(this).attr("id")))
+        //console.log($(this).attr("id"))
+    })
 
     //Set listeners for all described carousels
     for (var c in carousels){
