@@ -60,7 +60,7 @@
                     <ul class="items_list">
                         {% for movie in movies_of_the_month %}
                             <li class="item">
-                                <div class="thumb" style="background-image: url('{% thumbnail movie.get_image "182x122" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                <div class="thumb" style="background-image: url('{% thumbnail movie.get_image "180x120" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
                                 <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a>
                                 <div class="film_desc">
                                     <div class="text">{{ movie.description|truncatewords_html:12 }}</div>
@@ -85,32 +85,19 @@
                     {% with movie=history.movie trailers=history.movie.trailer_set.all %}
                         {% if movie.get_all_images_playable.0.2 %}
                             <li class="carousel2{{ history.id }} narrow">
-                                <div id="carousel2{{ history.id }}" class="carousel_wrapper">
-                                    <div class="carousel-inner">
-                                        <ul class="items_list">
-                                            {% for image in movie.get_all_images_playable %}
-                                                <li class="item">
-                                                    <div class="thumb" style="background-image: url('{% thumbnail image.0 "500x200" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
+                                {% with image=movie.get_all_images_playable.0 %}
+                                    <div class="item">
+                                        <div class="thumb" style="background-image: url('{% thumbnail image.0 "227x144" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                        {% if image.1 %}
+                                            <a href="#" class="play"></a>
+                                        {% endif %}
                                     </div>
-                                </div>
-                                <a class="film_title" href="{{ movie.get_absolute_url }}">{{ movie.title }} {{ history.rated_day|date:"j.m.Y" }}</a> 
-                                <a href="" carousel="carousel2{{ history.id }}" class="arrow left content"></a>
-                                <a href="" carousel="carousel2{{ history.id }}" class="arrow right content"></a>
+                                {% endwith %}
+                                <a class="film_title" href="{{ movie.get_absolute_url }}"><small>{{ history.rated_day|date:"j.m.Y" }}</small> {{ movie.title }}</a> 
                                 <div class="film_desc">
                                     <div class="text">{{ movie.description|truncatewords_html:10 }}</div>
                                     <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
                                 </div>
-
-
-                                {% comment %}
-                                {% for image in movie.get_all_images_playable %}
-                                    {{ image.0.url }}
-                                    is playable: {{ image.1 }}
-                                {% endfor %}
-                                {% endcomment %}
                             </li>
                         {% else %}
                             <li class="carousel2{{ history.id }} wide">
@@ -119,27 +106,22 @@
                                         <ul class="items_list">
                                             {% for image in movie.get_all_images_playable %}
                                                 <li class="item">
-                                                    <div class="thumb" style="background-image: url('{% thumbnail image.0 "227x144" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                                    <div class="thumb" style="background-image: url('{% thumbnail image.0 "498x198" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                                    {% if image.1 %}
+                                                        <a href="#" class="play"></a>
+                                                    {% endif %}
                                                 </li>
                                             {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
-                                <a class="film_title" href="{{ movie.get_absolute_url }}">{{ movie.title }} {{ history.rated_day|date:"j.m.Y" }}</a> 
+                                <a class="film_title" href="{{ movie.get_absolute_url }}"><small>{{ history.rated_day|date:"j.m.Y" }}</small> {{ movie.title }}</a> 
                                 <a href="" carousel="carousel2{{ history.id }}" class="arrow left content"></a>
                                 <a href="" carousel="carousel2{{ history.id }}" class="arrow right content"></a>
                                 <div class="film_desc">
-                                    <div class="text">{{ movie.description|truncatewords_html:40 }}</div>
+                                    <div class="text">{{ movie.description|truncatewords_html:80 }}</div>
                                     <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
                                 </div>
-
-
-                                {% comment %}
-                                {% for image in movie.get_all_images_playable %}
-                                    {{ image.0.url }}
-                                    is playable: {{ image.1 }}
-                                {% endfor %}
-                                {% endcomment %}
                             </li>
                         {% endif %}
                         
