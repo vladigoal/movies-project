@@ -7,39 +7,36 @@
 {% block movie_of_the_day %}
     <div class="day_wrapper">
         {% with day_movie=movies_of_the_day.0 %}
-            <div class="poster_wrapper">
-                <div class="poster">
-                    <div class="shine"></div>            
-                    <div class="image" style="background-image: url('{% thumbnail day_movie.get_image "207x303" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
-                </div>
-
-                <ul class="stars">
-                    <li></li><li></li><li></li><li></li><li></li>
-                </ul>
+            <div class="poster">
+                <div class="shine"></div>            
+                <div class="image" style="background-image: url('{% thumbnail day_movie.get_image "207x303" crop="center" as im %}{{ im.url }}{% endthumbnail %}');"></div>
             </div>
-            <div class="desc">
-                <h3>Movie of the day</h3>
-                <h2 class="name">{{ day_movie.title }}</h2>
-                <div class="day_arrows"><a href="#" class="l"></a><a href="#" class="r"></a></div>
-                <div class="splash_text">
-                    {{ day_movie.description|truncatewords_html:20 }}
+
+            <ul class="stars">
+                <li></li><li></li><li></li><li></li><li></li>
+            </ul>
+            
+            <h3>Movie of the day</h3>
+            <h2 class="name">{{ day_movie.title }}</h2>
+            <div class="day_arrows"><a href="#" class="l"></a><a href="#" class="r"></a></div>
+            <div class="splash_text">
+                {{ day_movie.description|truncatewords_html:20 }}
+            </div>
+            <div id="carousel1" class="carousel_wrapper">
+                <div class="carousel-inner">
+                    <ul class="items_list">
+                        {% for trailer in day_movie.trailer_set.all %}
+                            <li class="item">
+                                <div class="thumb" style="background-image: url('{% thumbnail trailer.image "162x98" crop="center" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                <a href="#">Trailer #1</a>
+                            </li>
+                        {% endfor %}
+                        
+                    </ul>
+                    {% comment %} rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}{% endcomment %}
                 </div>
-                <div id="carousel1" class="carousel_wrapper">
-                    <div class="carousel-inner">
-                        <ul class="items_list">
-                            {% for trailer in day_movie.trailer_set.all %}
-                                <li class="item">
-                                    <div class="thumb" style="background-image: url('{% thumbnail trailer.image "162x98" crop="center" as image %}{{ image.url }}{% endthumbnail %}');"></div>
-                                    <a href="#">Trailer #1</a>
-                                </li>
-                            {% endfor %}
-                            
-                        </ul>
-                        {% comment %} rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}{% endcomment %}
-                    </div>
-                    <a href="" carousel="carousel1" class="arrow left"></a>
-                    <a href="" carousel="carousel1" class="arrow right"></a>
-                </div>
+                <a href="" carousel="carousel1" class="arrow left"></a>
+                <a href="" carousel="carousel1" class="arrow right"></a>
             </div>
         {% endwith %}
     </div>

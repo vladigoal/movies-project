@@ -13,6 +13,7 @@ header{
                 background: none;
 
                 .topbar{
+                    position: relative;
                     width: 920px;
                     height: 44px;
                     margin-top: 22px;
@@ -23,12 +24,19 @@ header{
                     .border-top-left-radius(4px);
                     .border-bottom-left-radius(4px);
 
+                    .brand{
+                        padding: 13px 20px;
+
+                        img{
+                            float: left;
+                        }
+                    }
+                    
                     .nav-collapse{
                         float: left;
                         clear: none;
-                        width: 652px;
                         height: 44px;
-                        margin-left: 80px;
+                        margin-left: 78px;
 
                         .nav{
                             float: left;
@@ -37,18 +45,18 @@ header{
                             li{
                                 float: left;
                                 height: 22px;
-                                margin: 11px 0;
+                                margin: 10px 0 12px 0;
                                 border-left: 1px solid #393939;
 
                                 &:first-child{ border-left: 0;}
 
                                 a{
+                                    float: left;
                                     color: @white;
                                     font-size: 13px;
-                                    line-height: 14px;
+                                    line-height: 16px;
                                     text-shadow: 1px 1px #000;
                                     padding: 3px 14px;
-                                    margin-bottom: 1px;
 
                                     &:hover{
                                         text-decoration: underline;
@@ -59,17 +67,21 @@ header{
                     }
 
                     .form-search{
+                        float: right;
+                        margin-right: 33px;
                         margin-bottom: 0;
 
                         .input-append{
                             position: relative;
-                            margin: 8px 0;
+                            margin: 7px 0 9px 0;
 
                             input{
                                 width: 147px;
+                                height: 21px;
                                 padding: 4px 40px 4px 14px;
                                 font-size: 12px;
                                 color: #242424;
+                                line-height: 21px;
                                 border: 0;
                                 border-radius: 3px;
                             }
@@ -88,186 +100,187 @@ header{
         }    
 
         .day_wrapper{
-            width: 692px;
-            height: 365px;
-            margin: 51px 128px 5px 189px;
+            position: relative;
+            width: 1000px;
+            height: 421px;
 
-            .poster_wrapper{
-                float: left;
-                margin-top: 1px;
 
-                .poster{
-                    position: relative;
-                    width: 229px;
-                    height: 317px;
-                    background: url('@{url}header/poster_splash.png') 0 0 no-repeat;
+            .poster{
+                position: absolute;
+                left: 189px;
+                top: 51px;
+                width: 229px;
+                height: 317px;
+                background: url('@{url}header/poster_splash.png') 0 0 no-repeat;
 
-                    .shine{
-                        position: absolute;
-                        left: 2px;
-                        top: 3px;
-                        width: 48px;
-                        height: 309px;
-                        background: url('@{url}header/poster_shine.png') 0 0 no-repeat;
-                    }
-                    .image{
-                        float: left;
-                        width: 207px;
-                        height: 303px; 
-                        margin: 6px 0 0 2px;
-                        background-color: @black;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                    }
+                .shine{
+                    position: absolute;
+                    left: 2px;
+                    top: 3px;
+                    width: 48px;
+                    height: 309px;
+                    background: url('@{url}header/poster_shine.png') 0 0 no-repeat;
                 }
-                .stars{
+                .image{
                     float: left;
-                    width: 90px;
-                    margin: 16px 0 0 63px;
+                    width: 207px;
+                    height: 303px; 
+                    margin: 6px 0 0 2px;
+                    background-color: @black;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+            .stars{
+                position: absolute;
+                left: 186px;
+                bottom: 19px;
+                width: 95px;
+                margin: 16px 0 0 63px;
 
-                    li{
-                        float: left;
-                        width: 18px;
-                        height: 18px;
-                        background-repeat: no-repeat;
-                        background-position: 0 0 ;
-                        background-image: url('@{url}header/star.png');
+                li{
+                    float: left;
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 1px;
+                    background-repeat: no-repeat;
+                    background-position: 0 0 ;
+                    background-image: url('@{url}header/star.png');
 
-                        &.hover{
-                            background-position: 0 -18px;
-                        }
+                    &.hover{
+                        background-position: 0 -18px;
                     }
                 }
             }
-            .desc{
-                position: relative;
-                float: left;
-                width: 430px;
-                height: 320px;
-                margin-left: 15px;
-
-                @marginLeft: 33px;
                 
-                h2, h3{
-                    margin: 0;
-                }
+            h2, h3{
+                margin: 0;
+            }
 
-                h3{ 
-                    margin-left: @marginLeft;
-                    color: @blueText;
-                    font-family: "Helvetica Neue Bold";
-                    font-size: 14px;
-                    line-height: 20px;
-                    text-transform: uppercase;
-                }
-                h2.name{
-                    margin-left: @marginLeft;
-                    color: @white;
-                    font-size: 20px;
-                    font-weight: normal;
-                    line-height: 32px;
-                }
-                .day_arrows{
-                    position: absolute;
-                    left: 281px;
-                    top: 9px;
+            h3{ 
+                position: absolute;
+                left: 465px;
+                top: 50px;
+                color: @blueText;
+                font-family: "Helvetica Neue Bold";
+                font-size: 14px;
+                line-height: 20px;
+                vertical-align: middle;
+                text-transform: uppercase;
+            }
+            h2.name{
+                position: absolute;
+                left: 466px;
+                top: 69px;
+                color: @white;
+                font-size: 20px;
+                font-weight: normal;
+                line-height: 32px;
+            }
+            .day_arrows{
+                position: absolute;
+                left: 713px;
+                top: 59px;
 
-                    a{
-                        float: left;
-                        display: block;
-                        width: 13px;
-                        height: 13px;
-                        background-repeat: no-repeat;
-                        background-image: url('@{url}header/day_arr.png');
+                a{
+                    float: left;
+                    display: block;
+                    width: 13px;
+                    height: 13px;
+                    background-repeat: no-repeat;
+                    background-image: url('@{url}header/day_arr.png');
 
-                        &.l{
-                            background-position: 0 0;
-                        }
-                        &.r{
-                            background-position: -13px 0;
-                        }
+                    &.l{
+                        background-position: 0 0;
+                    }
+                    &.r{
+                        background-position: -13px 0;
                     }
                 }
-                .splash_text{
-                    width: 330px;
-                    height: 48px;
-                    margin-top: 13px;
-                    margin-left: @marginLeft;
-                    padding: 26px 20px 18px 20px;
-                    color: #979797;
-                    font-size: 12px;
-                    line-height: 16px;
-                    background: url('@{url}header/splash_text.png') 0 0 no-repeat;
-                }
-                .carousel_wrapper{
-                    position: absolute;
-                    left: 1px;
-                    bottom: 4px;
-                    width: 439px;
+            }
+            .splash_text{
+                position: absolute;
+                left: 466px;
+                top: 102px;
+                width: 330px;
+                height: 48px;
+                margin-top: 13px;
+                padding: 26px 20px 18px 20px;
+                color: #979797;
+                font-size: 12px;
+                line-height: 16px;
+                background: url('@{url}header/splash_text.png') 0 0 no-repeat;
+            }
+            .carousel_wrapper{
+                position: absolute;
+                left: 433px;
+                top: 244px;
+                width: 439px;
+                height: 122px;
+
+                .carousel-inner{
+                    width: 398px;
                     height: 122px;
+                    margin: 0 33px;
+                    overflow: hidden;
 
-                    .carousel-inner{
-                        width: 398px;
-                        height: 122px;
-                        margin: 0 33px;
-                        overflow: hidden;
+                    ul{
+                        margin: 0;
 
-                        ul{
-                            margin: 0;
+                        .item{
+                            float: left;
+                            width: 162px;
+                            height: 115px;
+                            margin-right: 27px;
+                            padding: 4px 6px 3px 4px;
+                            #translucent > .background(#000, 0.2);
+                            .border-top-left-radius(3px);
+                            .border-top-right-radius(3px);
 
-                            .item{
+                            .thumb{
                                 float: left;
                                 width: 162px;
-                                height: 115px;
-                                margin-right: 27px;
-                                padding: 4px 6px 3px 4px;
-                                background: url('@{url}header/trailer_splash.png') 0 0 no-repeat;
-
-                                .thumb{
-                                    float: left;
-                                    width: 162px;
-                                    height: 98px;
-                                    background-color: @black;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    .border-radius(4px);
-                                }
-                                a{
-                                    float: left;
-                                    color: #888888;
-                                    font-size: 12px;
-                                    line-height: 19px;
-                                    text-transform: uppercase;
-                                }
-                            } 
-                        }   
-                    }
-                    .arrow{
-                        outline: none;
-                        position: absolute;
-                        display: block;
-                        top: 44px;
-                        width: 21px;
-                        height: 24px;
-                        background-repeat: no-repeat;
-                        background-image: url('@{url}header/trailer_arr.png');
-                        outline: none;
-
-                        &.left{
-                            left: 0px;
-                            background-position: 0 0;
-
-                            &.hover{
-                                background-position: 0 -24px;
+                                height: 98px;
+                                background-color: @black;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                .border-radius(4px);
                             }
+                            a{
+                                float: left;
+                                color: #888888;
+                                font-size: 12px;
+                                line-height: 19px;
+                                text-transform: uppercase;
+                            }
+                        } 
+                    }   
+                }
+                .arrow{
+                    outline: none;
+                    position: absolute;
+                    display: block;
+                    top: 44px;
+                    width: 21px;
+                    height: 24px;
+                    background-repeat: no-repeat;
+                    background-image: url('@{url}header/trailer_arr.png');
+                    outline: none;
+
+                    &.left{
+                        left: 1px;
+                        background-position: 0 0;
+
+                        &.hover{
+                            background-position: 0 -24px;
                         }
-                        &.right{
-                            right: 0px;
-                            background-position: -21px 0;
+                    }
+                    &.right{
+                        right: 2px;
+                        background-position: -21px 0;
 
-                            &.hover{
-                                background-position: -21px -24px;
-                            }
+                        &.hover{
+                            background-position: -21px -24px;
                         }
                     }
                 }
