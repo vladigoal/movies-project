@@ -80,23 +80,7 @@
             <ul class="films_list">
                 {% for history in movies_of_the_day_history %}
                     {% with movie=history.movie trailers=history.movie.trailer_set.all %}
-                        {% if movie.get_all_images_playable.0.2 %}
-                            <li class="carousel2{{ history.id }} narrow">
-                                {% with image=movie.get_all_images_playable.0 %}
-                                    <div class="item">
-                                        <div class="thumb" style="background-image: url('{% thumbnail image.0 "227x144" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
-                                        {% if image.1 %}
-                                            <a href="#" class="play"></a>
-                                        {% endif %}
-                                    </div>
-                                {% endwith %}
-                                <a class="film_title" href="{{ movie.get_absolute_url }}"><small>{{ history.rated_day|date:"j.m.Y" }}</small> {{ movie.title }}</a> 
-                                <div class="film_desc">
-                                    <div class="text">{{ movie.description|truncatewords_html:10 }}</div>
-                                    <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
-                                </div>
-                            </li>
-                        {% else %}
+                        {% if movie.is_wide %} 
                             <li class="carousel2{{ history.id }} wide">
                                 <div id="carousel2{{ history.id }}" class="carousel_wrapper">
                                     <div class="carousel-inner">
@@ -104,9 +88,6 @@
                                             {% for image in movie.get_all_images_playable %}
                                                 <li class="item">
                                                     <div class="thumb" style="background-image: url('{% thumbnail image.0 "498x198" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
-                                                    {% if image.1 %}
-                                                        <a href="#" class="play"></a>
-                                                    {% endif %}
                                                 </li>
                                             {% endfor %}
                                         </ul>
@@ -120,15 +101,52 @@
                                     <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
                                 </div>
                             </li>
+                        {% else %}
+                            <li class="carousel2{{ history.id }} narrow">
+                                {% with image=movie.get_all_images_playable.0 %}
+                                    <div class="item">
+                                        <div class="thumb" style="background-image: url('{% thumbnail image.0 "227x144" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                        {% if image.1 %} {# if trailer #}
+                                            <a href="#" class="play"></a>
+                                        {% endif %}
+                                    </div>
+                                {% endwith %}
+                                <a class="film_title" href="{{ movie.get_absolute_url }}"><small>{{ history.rated_day|date:"j.m.Y" }}</small> {{ movie.title }}</a> 
+                                <div class="film_desc">
+                                    <div class="text">{{ movie.description|truncatewords_html:10 }}</div>
+                                    <span class="counter likes">{{ movie.likes_month }}</span><span class="counter views">{{ movie.played_times_month }}</span>
+                                </div>
+                            </li>
                         {% endif %}
                         
                     {% endwith %}
                 {% endfor %}
             </ul>
         </div>
+
+        <div class="news">
+            <h1 class="section_title">latest news</h1> 
+            <ul class="films_list">
+                {% for newsitem in news %}
+                    <li>
+                        <div class="item">
+                            {% thumbnail newsitem.get_image_playable.0 "313" crop="center top" as image %}
+                                <img width="313" class="thumb" src="{{ image.url }}">
+                            {% endthumbnail %}
+                            {% if newsitem.get_image_playable.1 %} {# if trailer #}
+                                <a href="{{newsitem.get_image_playable.1url }}" class="play"></a>
+                            {% endif %}
+                        </div>
+                        <a class="film_title" href="{{ newsitem.get_image_playable.0.url }}">{{ newsitem.title }}</a> 
+                        <div class="film_desc">
+                            <div class="text">{{ newsitem.full_text|truncatewords_html:20 }}</div>
+                            <span class="counter likes">10</span><span class="counter views">12</span>
+                        </div>
+                    </li>
+                {% endfor %}  
+            </ul>
+        </div>        
     </div>
-                            
-                        
 
 {% endblock %}
 {% comment %}

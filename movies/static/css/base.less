@@ -60,9 +60,10 @@ ul{
         float: left;
         display: block;
         width: 35px;
-        padding-right: 5px;
-        padding-left: 19px;
+        padding-right: 6px;
+        padding-left: 17px;
         height: 11px;
+        font-family: "Arial";
         color: @greyText;
         font-size: 11px;
         line-height: 11px;
@@ -70,7 +71,7 @@ ul{
         background-image: url('@{url}own_likes.png');
 
         &.likes{
-            background-position: 0 0;
+            background-position: 2px 0;
         }
         &.views{
             background-position: -156px 0;
@@ -85,7 +86,7 @@ ul{
             font-family: "Helvetica Neue Bold";
             color: @greyText;
             font-size: 19px;
-            line-height: 19px;
+            line-height: 25px;
             text-transform: uppercase;
         }
         .film_desc{
@@ -102,18 +103,23 @@ ul{
 
             .top{
                 float: left;
-                width: 872px;
-                height: 19px;
-                margin-top: 68px;
-                margin-left: @marginLeftContent + 16;
+                width: 873px;
+                height: 25px;
+                margin-top: 63px;
+                margin-left: @marginLeftContent + 15;
 
                 h1.section_title{
                     color: @greyText - #020202;
 
                 }
+                .arrow{
+                    margin-top: 4px;
+                }
 
                 .see_all{
+                    display: block;
                     float: right;
+                    margin-top: 5px;
                     padding-left: 22px;
                     color: @blueText; 
                     font-size: 13px;
@@ -147,7 +153,7 @@ ul{
                                 float: left;
                                 width: 182px;
                                 height: 122px;
-                                margin-bottom: 24px;
+                                margin-bottom: 22px;
                                 background-color: @black;
                                 background-position: center;
                                 background-repeat: no-repeat;
@@ -155,17 +161,19 @@ ul{
                             }
                             a{
                                 float: left;
+                                margin-left: 1px;
                                 color: @blueText; 
                                 font-size: 13px;
                                 text-decoration: underline;
                             }
                             .film_desc{
                                 float: left;
-                                margin-top: 4px;
+                                margin-top: 5px;
 
                                 .text{
                                     float: left;
                                     margin-bottom: 16px;
+                                    margin-left: 1px;
                                     font-size: 12px;
                                     line-height: 14px;
                                     height: 42px;
@@ -213,17 +221,35 @@ ul{
         }
     }
 
-    .history{
+    .history, .news{
         float: left;
+        margin-top: 74px;
+    }
+    .history h1.section_title, .news h1.section_title{
+        margin-bottom: 28px;
+    }
+    .play{
+        position: absolute;
+        width: 33px;
+        height: 35px;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-image: url('@{url}play_btn.png');
+        z-index: 10;
+
+        &:hover{
+            background-position: 0 -35px;
+        }
+    }
+
+    .history{
         width: 500px;
-        margin-top: 80px;
+        margin-right: 72px;
         margin-left: @marginLeftContent;
         overflow: hidden;
 
         h1.section_title{
-            height: 20px;
             margin-left: 15px;
-            margin-bottom: 26px
         }
 
         ul.films_list{
@@ -243,12 +269,13 @@ ul{
                     #gradient > .vertical(#fff, #f8f8f8);
                     .border-bottom-right-radius(3px);
                     .border-bottom-left-radius(3px);
+                    .box-shadow(0 2px 0 rgba(0,0,0,.06));
 
                     .item{
                         position: relative;
                         width: @narrowWidth;
                         height: @narrowGallHeight;
-                        margin-bottom: 24px;
+                        margin-bottom: 25px;
                         .border-radius(3px);    
                         background-color: @black;
                         background-position: center;
@@ -269,12 +296,13 @@ ul{
                     }
 
                     .film_desc{
-                        margin: 8px 24px 0 24px;
+                        margin: 9px 24px 0 24px;
 
                         .text{
                             height: 42px;
                             margin-bottom: 15px;
                             line-height: 14px;
+                            overflow: hidden;
                         }
                     }
 
@@ -296,17 +324,18 @@ ul{
 
                     .film_desc{
                         width: @wideWidth - 18;
-                        margin-top: 18px;
-                        margin-left: 18px;
+                        margin-top: 19px;
+                        margin-left: 16px;
 
                         .text{
-                            margin-bottom: 15px;
+                            margin-bottom: 14px;
+                            margin-left: 3px;
                         }
                     }
 
                     .carousel_wrapper{
                         width: @wideWidth;
-                        margin-bottom: 26px;
+                        margin-bottom: 24px;
 
                         .carousel-inner{
                             float: left;
@@ -340,21 +369,10 @@ ul{
                     }
                 }
                 .play{
-                    position: absolute;
-                    right: 16px;
-                    bottom: 11px;
-                    width: 33px;
-                    height: 35px;
-                    background-position: 0 0;
-                    background-repeat: no-repeat;
-                    background-image: url('@{url}play_btn.png');
-                    z-index: 10;
-
-                    &:hover{
-                        background-position: 0 -35px;
-                    }
+                    right: 15px;
+                    bottom: 12px;
                 }
-
+                
                 .carousel_wrapper{
                     float: left;
                     
@@ -378,6 +396,57 @@ ul{
                     }
                 }
 
+            }
+        }
+    }
+
+    .news{
+        @newsWidth: 315px;
+        width: @newsWidth;
+
+        h1.section_title{
+            width: @newsWidth;
+        }
+
+        a.film_title{
+            float: left;
+            color: @blueText;
+            font-family: "Helvetica Neue Bold";
+            font-size: 20px;
+        }
+
+        .films_list{
+            float: left;
+            margin-left: 1px;
+
+            li{
+                float: left;
+                margin-bottom: 34px;
+
+                .item{
+                    position: relative;
+                    float: left;
+                    margin-bottom: 24px;
+
+                    .thumb{
+                        width: @newsWidth - 2;
+                        border: 1px solid @black;
+                        .border-radius(3px);
+                    }
+                    .play{
+                        right: 15px;
+                        bottom: 14px;
+                    }
+                }
+                .film_desc{
+                    float: left;
+                    margin-top: 19px;
+
+                    .text{
+                        width: @newsWidth;
+                        margin-bottom: 14px;
+                    }
+                }
             }
         }
     }
