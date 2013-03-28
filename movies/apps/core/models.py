@@ -82,13 +82,9 @@ class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin):
         return None
 
     def get_all_images_playable(self):
-        if (self.image_width / self.image_height) > 2.05:
-            wide = False
-        else:
-            wide = True
         images = []
         if self.image:
-            images.append((self.image, False, wide))
+            images.append((self.image, False))
         shots = self.movieshot_set.all()
         if shots.count():
             images.extend([(shot.image, False) for shot in shots])
@@ -96,6 +92,10 @@ class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin):
         if trailers.count():
             images.extend([(trailer.image, False) for trailer in trailers])
         return images
+
+    @property
+    def is_wide(self):
+        return (self.image_width / self.image_height) > 2.05
 
 
 class MovieShot(ImagedModel, DummyUrlMixin):
