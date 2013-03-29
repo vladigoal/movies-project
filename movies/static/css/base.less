@@ -130,13 +130,16 @@ ul{
             }
             .carousel_wrapper{
                 float: left;
+                height: 259px;
                 margin-left: @marginLeftContent + 16;   
+                overflow: hidden;
 
                 .carousel-inner{
                     width: 920px;
                     overflow: hidden;
 
-                    ul{
+                    .items_list{
+                        height: auto;
 
                         .item{
                             float: left;
@@ -452,7 +455,7 @@ ul{
     }
 }
 
-.month_wrapper .top:after, .month_wrapper:after, .news_wrapper:after, ul.films_list:after{
+.month_wrapper .top:after, .month_wrapper:after, .news_wrapper:after, ul.films_list:after, .month_wrapper .items_list:after{
     content:'.';
     clear:both;
     height: 0;

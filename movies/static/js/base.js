@@ -18,13 +18,8 @@ $(function(){
             $(".stars li").eq(i).addClass("hover")
         }
     }
-
-    $(".see_all").click(function(){
-        $("#carousel2 .items_list").removeAttr("style")
-        return false;
-    })
     
-
+    
     /*<Carousel>*/
     can_click = true
     var carousels =  {}
@@ -33,7 +28,6 @@ $(function(){
     carousel_init("carousel2", $(".month_wrapper"))
     $(".news_wrapper .history .carousel_wrapper").each(function(){
         carousel_init($(this).attr("id"), $("."+$(this).attr("id")))
-        //console.log($(this).attr("id"))
     })
 
     //Set listeners for all described carousels
@@ -97,5 +91,33 @@ $(function(){
         can_click = true
     }
     /*</Carousel>*/
+
+    var open = false
+    var top_carousel_h = $(".month_wrapper .carousel_wrapper").height()
+    var items_list_width = $(".month_wrapper .items_list").width()
+    $(".see_all").click(function(){
+        var obj = $(".month_wrapper .carousel_wrapper")
+        var speed = 600
+        if(open){
+            obj.stop(true, false).animate({
+                height: top_carousel_h
+            }, speed, function(){
+                obj.find(".items_list").width(items_list_width)
+                $(".month_wrapper .arrow").show()
+                open = false
+            })
+        }else{
+            obj.find(".items_list").removeAttr("style")
+            var open_height = obj.find(".carousel-inner").height()
+            obj.stop(true, false).animate({
+                height: open_height
+            }, speed, function(){
+                $(".month_wrapper .arrow").hide()
+                open = true
+            })  
+        }
+        
+        return false
+    })
 
 });
