@@ -109,7 +109,6 @@ $(function(){
         }else{
             obj.find(".items_list").removeAttr("style")
             var open_height = obj.find(".carousel-inner").height()
-            console.log(open_height)
             obj.stop(true, false).animate({
                 height: open_height
             }, speed, function(){
