@@ -90,7 +90,7 @@ class Movie(ImagedModel, DummyUrlMixin, TitleSlugifyMixin):
             images.extend([(shot.image, False) for shot in shots])
         trailers = self.trailer_set.all()
         if trailers.count():
-            images.extend([(trailer.image, False) for trailer in trailers])
+            images.extend([(trailer.image, True) for trailer in trailers])
         return images
 
     @property

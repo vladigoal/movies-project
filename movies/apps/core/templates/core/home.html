@@ -88,6 +88,9 @@
                                             {% for image in movie.get_all_images_playable %}
                                                 <li class="item">
                                                     <div class="thumb" style="background-image: url('{% thumbnail image.0 "498x198" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                                    {% if image.1 %} {# if trailer #}
+                                                        <a href="#" class="play"></a>
+                                                    {% endif %}
                                                 </li>
                                             {% endfor %}
                                         </ul>
