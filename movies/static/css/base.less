@@ -15,6 +15,12 @@
 
 body{
     padding: 0;
+
+    /*&.modal-open{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }*/
 }
 
 ul{
@@ -161,6 +167,38 @@ ul{
                                 background-position: center;
                                 background-repeat: no-repeat;
                                 .border-radius(3px);
+
+                                .transp{
+                                    display: none;
+                                    width: 182px;
+                                    height: 122px;
+                                    #translucent > .background(#222222, 0.78);
+                                    .border-radius(3px);
+
+                                    a{
+                                        display: block;
+                                        width: 132px;
+                                        height: 20px;
+                                        margin: 49px 25px;
+                                        padding: 7px 0;
+                                        color: #fff;
+                                        font-family: "Helvetica Neue Bold";
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        text-align: center;
+                                        text-decoration: none;
+                                        background-repeat: no-repeat;
+                                        background-position: 0 0;
+                                        background-image: url('@{url}history_btn.png');
+                                        
+                                        &:hover{
+                                            background-position: 0 -34px;
+                                        }
+                                        &:active{
+                                            background-position: 0 -68px;
+                                        }
+                                    }
+                                }
                             }
                             a{
                                 float: left;
@@ -453,6 +491,21 @@ ul{
             }
         }
     }
+}
+
+#popup.modal{
+    position: absolute;
+    width: 859px;
+    height: 685px;
+    left: 50%;
+    top: 50%;
+    margin: -346px 0 0 -433px; 
+    border: 0;
+    //.box-shadow(0 2px 5px rgba(00,0,0,.4));
+}
+.modal-backdrop.fade.in{
+    opacity: 1.0;
+    background-color: #fff;
 }
 
 .month_wrapper .top:after, .month_wrapper:after, .news_wrapper:after, ul.films_list:after, .month_wrapper .items_list:after{

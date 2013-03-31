@@ -92,6 +92,8 @@ $(function(){
     }
     /*</Carousel>*/
 
+    /*<Movies of the month>*/
+    //See all click event
     var open = false
     var top_carousel_h = $(".month_wrapper .carousel_wrapper").height()
     var items_list_width = $(".month_wrapper .items_list").width()
@@ -120,4 +122,14 @@ $(function(){
         return false
     })
 
+    //item hover
+    $(".month_wrapper .item").hover(function(){
+        $(this).find(".transp").show()
+    }, function(){
+        $(this).find(".transp").hide()
+    })
+    $('#popup').modal({
+    
+    })
+    /*</Movies of the month>*/
 });
