@@ -57,7 +57,11 @@
                     <ul class="items_list">
                         {% for movie in movies_of_the_month %}
                             <li class="item">
-                                <div class="thumb" style="background-image: url('{% thumbnail movie.get_image "180x120" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');"></div>
+                                <div class="thumb" style="background-image: url('{% thumbnail movie.get_image "180x120" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');">
+                                    <div class="transp">
+                                        <a href="#popup" role="button" class="btn" data-toggle="modal">Recommend</a>
+                                    </div>
+                                </div>
                                 <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a>
                                 <div class="film_desc">
                                     <div class="text">{{ movie.description|truncatewords_html:12 }}</div>
