@@ -128,8 +128,60 @@ $(function(){
     }, function(){
         $(this).find(".transp").hide()
     })
-    $('#popup').modal({
-    
+    /*$(".month_wrapper .item .btn").click(function(){
+        $("header").hide()
+        $(".main-wrap").hide()
+        if($(window).height() < $("#popup").height() + 20){
+            $("body").height($("#popup").height() + 20)
+            $("body").addClass("low")
+        }else{
+            $("body").height($(window).height())
+        }
+
+        if($(window).width() < $("#popup").width() + 50){
+            $("body").height($("#popup").height() + 50)
+            $("body").addClass("narrow")
+        }else{
+            $("body").width($(window).width() + 50)
+        }
+
+        $('#popup').modal('show')
     })
+    
+    $("#popup .close, .modal-backdrop.fade.in").click(function(){
+        $('#popup').modal('hide')
+        $("body").removeAttr("style")
+        $("body").removeClass("low")
+        $("body").removeClass("narrow")
+        $("header").show()
+        $(".main-wrap").show()
+    })*/
+
+    $("#popup").on('shown', function () {
+        $("header").hide()
+        $(".main-wrap").hide()
+        if($(window).height() < $("#popup").height() + 20){
+            $("body").height($("#popup").height() + 20)
+            $("body").addClass("low")
+        }else{
+            $("body").height($(window).height())
+        }
+
+        if($(window).width() < $("#popup").width() + 50){
+            $("body").height($("#popup").height() + 50)
+            $("body").addClass("narrow")
+        }else{
+            $("body").width($(window).width() + 50)
+        }
+    })
+
+    $("#popup").on('hidden', function () {
+        $("body").removeAttr("style")
+        $("body").removeClass("low")
+        $("body").removeClass("narrow")
+        $("header").show()
+        $(".main-wrap").show()  
+    })
+    
     /*</Movies of the month>*/
 });

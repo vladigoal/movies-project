@@ -4,6 +4,7 @@
 {% load compress %}
 {% load url from future %}
 {% load webdesign %}
+{% load thumbnail %}
 
 
 {% block head_title %}{% endblock head_title %}
@@ -160,10 +161,6 @@
                                     {% endif %}
                                 {% endfor %}
                             </ul>
-                                
-                            {% comment %}
-                            {% include "core/blocks/footer-menu.html" %}
-                            {% endcomment %}
                         {% endblock %}
                     {% endblock %}
                 </div>
@@ -173,16 +170,49 @@
 
     <!-- Modal -->
     <div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-    </div>
-    <div class="modal-body">
-    <p>One fine body…</p>
-    </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
-    </div>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img src="{% static 'img/popup/close.png' %}"></button>
+        <div class="image film" style="background-image: url('/media/static/img/popup/20-th.jpg');"></div>
+        <div class="reputation">
+            <span class="number">1</span>
+            Reputation
+        </div>
+        <div class="note">
+            Your friends followed<br>
+            your recemmendations<br>
+            and you’ve got 373<br>
+            reputation now
+        </div>
+        <div class="minutes">
+            <img class="dash" src="{% static 'img/popup/minutes_dash.png' %}">
+            <span class="number">10</span>
+            minutes
+        </div>
+        <form>
+            <div class="modal-body">
+                <h3>Recommend “20th century fox” films <br>to friends and get Rewards</h3>
+                <div class="for_list">You will get:</div>
+                <ul>
+                    <li>1 reputation</li>
+                    <li>10 bonus minutes to watch films</li>
+                </ul>
+                <div class="prize">
+                    <div class="image" style="background-image: url('/media/static/img/popup/prize.jpg');"></div>
+                    <div class="desc">Bring 20 friends during a month <br>and get chance to win <span>iPod Nano 4th Gen 16Gb</span></div>
+                </div>
+                <div class="comment">
+                    <div class="image" style="background-image: url('/media/static/img/popup/avatar.jpg');"></div>
+                    <div class="txt_area"><textarea name="comment" placeholder="Your comment"></textarea></div>
+                </div>
+                <a href="#" class="attach">Attach a photo</a>
+                <div class="friends">
+                    <button type="button">All Friends</button>
+                    <a class="select" href="#">Select</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="recommend">Recommend</button>
+            </div
+        </form>
+        
     </div>
 {% endblock %}
