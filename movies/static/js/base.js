@@ -128,8 +128,7 @@ $(function(){
     }, function(){
         $(this).find(".transp").hide()
     })
-
-    $("#popup").on('shown', function () {
+    $(".month_wrapper .thumb a").click(function(){
         if($(window).height() < $("#popup").height() + 20){
             $("body").height($("#popup").height() + 20)
             $("body").addClass("low")
@@ -146,7 +145,27 @@ $(function(){
 
         $("header").hide()
         $(".main-wrap").hide()
+        $('#popup').modal('show')
+        return false
     })
+    /*$("#popup").on('shown', function () {
+        if($(window).height() < $("#popup").height() + 20){
+            $("body").height($("#popup").height() + 20)
+            $("body").addClass("low")
+        }else{
+            $("body").height($(window).height())
+        }
+
+        if($(window).width() < $("#popup").width() + 50){
+            $("body").height($("#popup").height() + 50)
+            $("body").addClass("narrow")
+        }else{
+            $("body").width($(window).width())
+        }
+
+        $("header").hide()
+        $(".main-wrap").hide()
+    })*/
 
     $("#popup").on('hidden', function () {
         $("body").removeAttr("style")
