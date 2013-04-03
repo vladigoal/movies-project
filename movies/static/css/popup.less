@@ -58,12 +58,13 @@ body.narrow{
         position: absolute;
         right: -8px;
         width: 89px;
-        height: 55px;
-        padding-top: 8px;
-        padding-bottom: 16px;
+        padding-top: 10px;
+        padding-bottom: 17px;
         color: @white;
         font-size: 15px;
-        font-family: "Helvetica Neue Bold";
+        font-family: "Arial";
+        font-weight: bold;
+        line-height: 17px;
         text-align: center;
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
         background-repeat: no-repeat;
@@ -100,6 +101,7 @@ body.narrow{
         top: 137px;
         width: 150px;
         color: #656666;
+        font-family: "Helvetica Neue";
         font-size: 13px;
         line-height: 17px;
     }
@@ -112,25 +114,32 @@ body.narrow{
         overflow: visible;
 
         h3{
-            margin: 0 0 23px @marginLeft;
-            margin-bottom: 23px;
+            float: left;
+            width: 493px;
+            margin: 0 0 23px @marginLeft - 1;
+            margin-bottom: 24px;
             color: #231f20;
-            font-family: "Helvetica Neue Bold";
+            font-family: "Arial";
+            font-weight: bold;
             font-size: 20px;
             line-height: 20px;
         }
         .for_list{
+            float: left;
+            width: 492px;
             margin-left: @marginLeft;
             font-family: "Helvetica Neue Bold";
             font-size: 17px;
             line-height: 19px;
         }
         ul{
+            float: left;
+            width: 498px;
             list-style-image: url('@{url}popup/ul_bullet.png');
             margin: 12px 0 0 @marginLeft + 12;
             
             li{
-                //margin: 4px 0 5px 0;
+                font-family: "Helvetica Neue";
                 padding: 3px 0 3px 9px;
                 color: #656666;
                 font-size: 15px;
@@ -142,6 +151,7 @@ body.narrow{
         }
 
         .prize{
+            float: left;
             height: 70px;
             margin-top: 44px;
             margin-left: @marginLeft - 1;
@@ -155,6 +165,7 @@ body.narrow{
                 float: left;
                 width: 317px;
                 padding: 5px 0 0 22px;
+                font-family: "Helvetica Neue";
                 font-size: 13px;
                 line-height: 17px;
                 
@@ -165,8 +176,10 @@ body.narrow{
             }
         }
         .comment{
+            float: left;
+            width: 498px;
             height: 72px;
-            margin-top: 42px;
+            margin-top: 41px;
             margin-left: @marginLeft - 1;
 
             .image{
@@ -179,7 +192,7 @@ body.narrow{
                 position: relative;
                 width: 369px;
                 height: 72px;
-                margin-left: 13px;
+                margin-left: 14px;
                 background: url('@{url}popup/txt_area.png') 0 0 no-repeat;
 
                 textarea{
@@ -191,6 +204,7 @@ body.narrow{
                     margin: 0;
                     padding: 0;
                     color: #7e8080;
+                    font-family: "Arial";
                     font-size: 15px;
                     line-height: 17px;
                     border: 0;
@@ -199,11 +213,14 @@ body.narrow{
             }
         }
         .attach{
-            display: inline-block;
+            float: left;
+            width: 115px;
+            display: block;
             margin-top: 8px;
             margin-left: @marginLeft + 86;
             padding-left: 21px;
             color: #52a4bf;
+            font-family: "Arial";
             font-size: 13px;
             line-height: 16px;
             text-decoration: underline;
@@ -214,9 +231,10 @@ body.narrow{
             }
         }
         .friends{
+            float: left;
             width: 490px;
             height: 71px;
-            margin-top: 35px;
+            margin-top: 36px;
             background-color: #fafcfc;
             border: 1px solid #f1f2f2;
             .border-radius(5px);
@@ -227,7 +245,8 @@ body.narrow{
                 margin: 19px 0 0 15px;
                 padding: 4px 0 5px;
                 color: @white;
-                font-family: "Helvetica Neue Bold";
+                font-family: "Arial";
+                font-weight: bold;
                 font-size: 15px;
                 text-align: center;
                 background-color: #cacccc;
@@ -238,9 +257,10 @@ body.narrow{
             .select{
                 float: left;
                 display: inline-block;
-                margin: 23px 0 0 12px;
+                margin: 23px 0 0 11px;
+                font-family: "Arial";
                 font-size: 15px;
-                font-family: "Helvetica Neue Bold";
+                font-weight: bold;
                 text-decoration: underline;
 
                 &:hover{
@@ -257,10 +277,11 @@ body.narrow{
 
         .recommend{
             width: 165px;
-            margin: 14px 0 0 140px;
-            padding: 12px 7px 16px 0;
+            margin: 14px 0 0 141px;
+            padding: 13px 6px 15px 0;
             color: @white;
-            font-family: "Helvetica Neue Bold";
+            font-family: "Arial";
+            font-weight: bold;
             font-size: 15px;
             text-align: center;
             text-transform: uppercase;

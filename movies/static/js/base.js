@@ -155,6 +155,5 @@ $(function(){
         $("header").show()
         $(".main-wrap").show()  
     })
-    
     /*</Movies of the month>*/
 });
