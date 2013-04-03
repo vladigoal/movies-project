@@ -5,6 +5,7 @@
 {% block header_bg %}background: url({% static 'img/header/pattern.jpg' %}) 0 0 no-repeat;{% endblock %}
 
 {% block movie_of_the_day %}
+
     <div class="day_wrapper">
         {% with day_movie=movies_of_the_day.0 %}
             <div class="poster">
@@ -31,15 +32,14 @@
                                 <a href="#">Trailer #1</a>
                             </li>
                         {% endfor %}
-                        
                     </ul>
-                    {% comment %} rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}{% endcomment %}
                 </div>
                 <a href="" carousel="carousel1" class="arrow left"></a>
                 <a href="" carousel="carousel1" class="arrow right"></a>
             </div>
         {% endwith %}
     </div>
+
 {% endblock %}
 
 {% block content %}
@@ -59,7 +59,7 @@
                             <li class="item">
                                 <div class="thumb" style="background-image: url('{% thumbnail movie.get_image "180x120" crop="center top" as image %}{{ image.url }}{% endthumbnail %}');">
                                     <div class="transp">
-                                        <a href="#popup" role="button" class="btn" data-toggle="modal">Recommend</a>
+                                        <a href="#popup" role="button" data-toggle="modal">Recommend</a>
                                     </div>
                                 </div>
                                 <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a>
@@ -76,9 +76,8 @@
         <div class="notch"></div>
     {% endblock %}
 
-
-
     <div class="news_wrapper">
+
         <div class="history">
             <h1 class="section_title">Movies of the day history</h1> 
             <ul class="films_list">
@@ -152,54 +151,8 @@
                     </li>
                 {% endfor %}  
             </ul>
-        </div>        
+        </div>     
+
     </div>
 
 {% endblock %}
-{% comment %}
-{% block content %}
-    {% with day_movie=movies_of_the_day.0 %}
-        <h1>Movie of the day</h1>
-        {{ day_movie.title }}<br/>
-        {{ day_movie.description }}<br/>
-        {% for trailer in movies_of_the_day.0.trailer_set.all %}
-            {% thumbnail trailer.image "200" as image %}
-                <img src="{{ image.url }}"><br/>
-            {% endthumbnail %}
-        {% endfor %}
-        rate: {{ day_movie.rating.score }} {{ day_movie.rating.votes }}
-    {% endwith %}
-
-
-    <h1>Movies of the month:</h1>
-    {% for movie in movies_of_the_month %}
-        {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}
-
-        {{ movie.get_image.url }}
-        <br/><br/>
-    {% endfor %}
-
-    <h1>Movies of the day history:</h1>
-    {% for history in movies_of_the_day_history %}
-        {{ history.rated_day }}
-        {% with movie=history.movie trailers=history.movie.trailer_set.all %}
-            {{ movie.title }} {{ movie.description }} {{ movie.likes_month }} {{ movie.played_times_month }} {{ movie.get_absolute_url }}<br/>
-            {% for image in movie.get_all_images_playable %}
-                {{ image.0.url }}
-                is playable: {{ image.1 }}
-            {% endfor %}
-        {% endwith %}</br>
-        <br/><br/>
-    {% endfor %}
-
-    <h1>Latest news:</h1>
-    {% for newsitem in news %}
-        {{ newsitem.title }} {{ newsitem.full_text }}
-        {{ newsitem.get_image_playable.0.url }}
-        {% if newsitem.get_image_playable.1 %}
-            It's trailer with url {{newsitem.get_image_playable.1url }}
-        {% endif %}
-        </br><br/>
-    {% endfor %}
-{% endblock %}
-{% endcomment %}
